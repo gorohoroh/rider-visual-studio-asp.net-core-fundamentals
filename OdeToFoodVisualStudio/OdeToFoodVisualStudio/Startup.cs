@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace OdeToFoodVisualStudio
 {
@@ -18,13 +19,38 @@ namespace OdeToFoodVisualStudio
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IGreeter greeter)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IGreeter greeter, ILogger<Startup> logger)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
 
+            app.Use(next =>
+            {
+                return async context =>
+                {
+                    logger.LogInformation("Request incoming");
+                    if(context.Request.Path.StartsWithSegments("/mym"))
+                    {
+                        // RDVS: VS completion breaks down after the await keyword - no longer suggests anything. Workaround: type a sync statement first, then add the "await" keyword
+                        // Rider handles this just fine.
+                        await context.Response.WriteAsync("Hit!!!");
+                        logger.LogInformation("Request handled");
+                    }
+                    else
+                    {
+                        await next(context);
+                        logger.LogInformation("Response outgoing");
+                    }
+
+                };
+            });
+
+            app.UseWelcomePage(new WelcomePageOptions {
+                Path = "/wp"
+            });
+            
             app.Run(async (context) =>
             {
                 // Configuration sources by descending priority: 1. command-line parameter, 2. environment variable, 3. appsettings.json (enables storing dev settings in appsettings.json and overriding them in production wtih environment variables for example)
