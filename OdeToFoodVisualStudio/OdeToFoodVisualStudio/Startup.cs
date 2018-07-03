@@ -17,6 +17,7 @@ namespace OdeToFoodVisualStudio
             // RDVS: Rider's completion works better with this generic method as it additionally adds the parentheses; additionally, VS overlaps the completion list inside the generic brackets
             // with with parameter info
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,7 +28,8 @@ namespace OdeToFoodVisualStudio
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseFileServer();
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {

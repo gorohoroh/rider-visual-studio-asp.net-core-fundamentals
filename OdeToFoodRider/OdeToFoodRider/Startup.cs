@@ -18,6 +18,7 @@ namespace OdeToFoodRider
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvc();
             
         }
 
@@ -29,8 +30,9 @@ namespace OdeToFoodRider
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseFileServer();
-            
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
+                        
             app.Run(async (context) =>
             {
                 var greeting = greeter.GetMessageOfTheDay();
