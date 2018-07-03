@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,7 +30,7 @@ namespace OdeToFoodVisualStudio
             }
 
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(ConfigureRoutes);
 
             app.Run(async (context) =>
             {
@@ -42,9 +43,17 @@ namespace OdeToFoodVisualStudio
                 // 3. Roslyn doesn't infer that the generated method should return a string, not an object
 
                 var greeting = greeter.GetMessageOfTheDay();
-
-                await context.Response.WriteAsync($"{greeting}: {env.EnvironmentName}");
+                context.Response.ContentType = "text/plain";
+                await context.Response.WriteAsync("Not found");
             });
+        }
+
+        private void ConfigureRoutes(IRouteBuilder routeBuilder)
+        {
+            // /Home/Index/4
+            routeBuilder.MapRoute("Default",
+                "{controller=Home}/{action=Index}/{id?}");
+
         }
     }
    
