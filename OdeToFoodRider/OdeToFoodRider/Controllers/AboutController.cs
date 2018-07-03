@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace OdeToFoodRider.Controllers
 {
+
+    [Route("company/[controller]/[action]")]
     public class AboutController
     {
         public string Phone()
