@@ -12,7 +12,7 @@
     {
         public string GetMessageOfTheDay()
         {
-            throw new System.NotImplementedException();
+            return "Greetings from Visual Studio!";
         }
     }
 }
