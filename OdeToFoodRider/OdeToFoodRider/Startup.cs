@@ -29,6 +29,7 @@ namespace OdeToFoodRider
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseFileServer();
             
             app.Run(async (context) =>
             {
