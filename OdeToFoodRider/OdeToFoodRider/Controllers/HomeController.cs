@@ -1,10 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
+using OdeToFoodRider.Models;
+
 namespace OdeToFoodRider.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Hello from Rider's Home controller!";
+            var model = new Restaurant() {Id = 1, Name = "Scott's Pizza Place"};
+            
+            return new ObjectResult(model);
         }
     }
 }
