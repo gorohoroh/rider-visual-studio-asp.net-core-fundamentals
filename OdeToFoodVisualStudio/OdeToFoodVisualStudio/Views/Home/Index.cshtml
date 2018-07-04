@@ -1,13 +1,21 @@
 ﻿@* VSRD: Visual Studio doesn't suggest importing the Restaurant model when typing @model Restaurant, so you have to type in the FQN. Let's see what Rider can do here :) *@
-@model OdeToFoodVisualStudio.Models.Restaurant
+@model IEnumerable<OdeToFoodVisualStudio.Models.Restaurant>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    @* VSRD: Visual Studio doesn't seem to provide Extend/Shrink selection in cshtml editor *@
-    <h1>@Model.Name</h1>
-    <div>The ID value is @Model.Id</div>
+    @* VSRD: Table generated in VS with a "table" code snippet *@
+    <table>
+        @* VSRD: No 'foreach' code snippet in VS, just keyword completion *@
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.Id</td>
+                <td>@restaurant.Name</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>
