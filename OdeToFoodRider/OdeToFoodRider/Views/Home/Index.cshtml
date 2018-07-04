@@ -1,5 +1,5 @@
 @using OdeToFoodRider.Models
-@model IEnumerable<Restaurant>
+@model OdeToFoodRider.ViewModels.HomeIndexViewModel
 
 <!DOCTYPE html>
 
@@ -8,11 +8,11 @@
     <title>My title</title>
 </head>
 <body>
+<h1>@Model.CurrentMessage</h1>
 @* VSRD: No table snippet in Rider. *@
 <table>
-
     @* VSRD: No foreach live template here, just keyword completion like in Visual Studio *@
-    @foreach (var restaurant in Model)
+    @foreach (var restaurant in Model.Restaurants)
     {
         <tr>
             <td>@restaurant.Id</td>
