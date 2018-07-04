@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using OdeToFoodRider.Models;
 using OdeToFoodRider.Services;
@@ -25,6 +26,18 @@ namespace OdeToFoodRider.Controllers
             model.Restaurants = _restaurantData.GetAll();
             model.CurrentMessage = _greeter.GetMessageOfTheDay();
             
+            return View(model);
+        }
+
+        public IActionResult Details(int id)
+        {
+            // VSRD: Rider's completion misfires here, too: the opening parentheses completes the existing GetAll() method, too
+            var model = _restaurantData.Get(id); // VSRD: In Rider, a "Check variable for null" CA is available, along with a quick path to null check pattern settings 
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(model);
         }
     }

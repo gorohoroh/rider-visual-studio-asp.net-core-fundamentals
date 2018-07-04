@@ -30,5 +30,19 @@ namespace OdeToFoodVisualStudio.Controllers
             return View(model);
 
         }
+
+        public IActionResult Details(int id)
+        {
+            // VSRD: at _restaurantData.Get{caret}, I want to use a method called Get() before declaring it but entering an opening parentheses completes the existing GetAll() method. Not good.
+            // VSRD: However, creating the method from usage here does in fact create "object Get()" in the IRestaurantData interface
+            var model = _restaurantData.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index)); // VSRD: if we type RedirectToAction("Index"), Visual Studio doesn't provide view completion in the string literal, which is why Scott prefers the nameof syntax
+            }
+
+            // VSRD: Visual Studio doesn't see that the view isn't resolved and doesn't suggest to create one.
+            return View(model);
+        }
     }
 }

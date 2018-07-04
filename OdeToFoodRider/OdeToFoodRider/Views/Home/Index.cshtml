@@ -17,6 +17,12 @@
         <tr>
             <td>@restaurant.Id</td>
             <td>@restaurant.Name</td>
+            <td>
+                @* VSRD: Rider's path mapping functionality acts weird with the path below *@
+                <a href="/home/details/@restaurant.Id">Details</a>
+                @Html.ActionLink("Go", "Details", new {id = restaurant.Id})
+                <a asp-action="Details" asp-route-id="@restaurant.Id">More</a>
+            </td>
         </tr>
     }
 </table>
