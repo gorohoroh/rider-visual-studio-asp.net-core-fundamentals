@@ -1,4 +1,4 @@
-﻿namespace OdeToFoodRider
+﻿namespace OdeToFoodRider.Services
 {
     public interface IGreeter
     {

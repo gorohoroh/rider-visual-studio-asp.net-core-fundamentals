@@ -1,4 +1,4 @@
-﻿namespace OdeToFoodVisualStudio
+﻿namespace OdeToFoodVisualStudio.Services
 {
     public interface IGreeter
     {
