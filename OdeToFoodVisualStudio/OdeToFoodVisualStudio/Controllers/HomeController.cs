@@ -44,5 +44,10 @@ namespace OdeToFoodVisualStudio.Controllers
             // VSRD: Visual Studio doesn't see that the view isn't resolved and doesn't suggest to create one.
             return View(model);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

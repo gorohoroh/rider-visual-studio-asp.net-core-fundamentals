@@ -1,0 +1,16 @@
+﻿@using OdeToFoodVisualStudio.Models
+@model OdeToFoodVisualStudio.Models.Restaurant
+@* VSRD: Visual Studio gives no import suggestions for model declaration - have to type in FQN (for which there is completion)  *@
+
+<h1>Create</h1>
+
+<form method="post">
+
+    <input asp-for="Name"/>
+
+    @* VSRD: No import action for unreferenced CuisineType, have to manually add a @using *@
+    <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
+    @* The above won't work if the select tag is empty (auto-closed: <select/>) *@
+
+    <input type="submit" name="save" value="Save" />
+</form>

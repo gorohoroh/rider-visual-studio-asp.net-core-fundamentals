@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace OdeToFoodVisualStudio.Models
 {
-    public class Restaurant
+    public enum CuisineType
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public CuisineType Cuisine { get; set; }
+        None,
+        Italian,
+        French,
+        German
     }
 }
