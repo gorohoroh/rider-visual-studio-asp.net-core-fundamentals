@@ -8,5 +8,6 @@ namespace OdeToFoodRider.Services
         // VSRD: Complete Statement at GetAll{caret} generates both the parentheses and the semicolon
         IEnumerable<Restaurant> GetAll();
         Restaurant Get(int id);
+        Restaurant Add(Restaurant restaurant);
     }
 }

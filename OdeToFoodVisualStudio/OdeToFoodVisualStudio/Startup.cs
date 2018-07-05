@@ -19,7 +19,7 @@ namespace OdeToFoodVisualStudio
             // RDVS: Rider's completion works better with this generic method as it additionally adds the parentheses; additionally, VS overlaps the completion list inside the generic brackets
             // with with parameter info
             services.AddSingleton<IGreeter, Greeter>(); // singleton scope
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>(); // per-HTTP-request lifeime
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>(); // per-HTTP-request lifeime
             services.AddMvc();
         }
 

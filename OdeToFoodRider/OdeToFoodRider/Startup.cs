@@ -20,7 +20,7 @@ namespace OdeToFoodRider
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
             services.AddMvc();
             
         }
