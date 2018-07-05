@@ -11,13 +11,22 @@
 <h1>Create</h1>
 
 <form method="post">
-    <input asp-for="Name"/>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
 
-    @*VSRD: Rider's code analysis bug in the asp-items expression below: RSRP-469518 *@
-    <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
+    <div>
+        <label asp-for="Cuisine"></label>
+        <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
+        <span asp-validation-for="Cuisine"></span>
+    </div>
 
     <input type="submit" name="save" value="Save"/>
 </form>
+
+<div asp-validation-summary="All"></div>
 <div>
 
 </div>

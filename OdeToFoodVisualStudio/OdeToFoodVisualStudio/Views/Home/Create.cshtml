@@ -6,11 +6,21 @@
 
 <form method="post">
 
-    <input asp-for="Name"/>
+    <div>
+        @* Label will only display when it's a tag pair, NOT a self-closing tag! *@
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
 
-    @* VSRD: No import action for unreferenced CuisineType, have to manually add a @using *@
-    <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
-    @* The above won't work if the select tag is empty (auto-closed: <select/>) *@
+    @* VSRD: Visual Studio has "Wrap with div" action but it's not reformatting the resulting markup, and as Extend Selection doesn't work in Razor, I have to select manually, then invoke Ctrl+K,F to reformat selection *@
+    <div>
+        <label asp-for="Cuisine"></label>
+        <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
+        <span asp-validation-for="Cuisine"></span>
+    </div>
 
     <input type="submit" name="save" value="Save" />
 </form>
+
+<div asp-validation-summary="All"></div>
