@@ -1,29 +1,29 @@
 ﻿@* VSRD: Visual Studio doesn't suggest importing the Restaurant model when typing @model Restaurant, so you have to type in the FQN. Let's see what Rider can do here :) *@
 @model OdeToFoodVisualStudio.ViewModels.HomeIndexViewModel
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
+@{ ViewBag.Title = "Home page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    <h1>@Model.CurrentMessage</h1>
-    @* VSRD: Table generated in VS with a "table" code snippet *@
-    <table>
-        @* VSRD: No 'foreach' code snippet in VS, just keyword completion *@
-        @foreach (var restaurant in Model.Restaurants)
-        {
-            <tr>
-                <td>@restaurant.Id</td>
-                <td>@restaurant.Name</td>
-                <td>
-                    <a href="/home/details/@restaurant.Id">Details</a>
-                    @Html.ActionLink("Go", "Details", new { id = restaurant.Id })
-                    <a asp-action="Details" asp-route-id="@restaurant.Id">More</a>
-                </td>
-            </tr>
-        }
-    </table>
-    <a asp-action="Create">Add Restaurant</a>
-</body>
-</html>
+<h1>All Restaurants</h1>
+@* VSRD: Table generated in VS with a "table" code snippet *@
+<table>
+    @* VSRD: No 'foreach' code snippet in VS, just keyword completion *@
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <tr>
+            <td>@restaurant.Id</td>
+            <td>@restaurant.Name</td>
+            <td>
+                <a href="/home/details/@restaurant.Id">Details</a>
+                @Html.ActionLink("Go", "Details", new { id = restaurant.Id })
+                <a asp-action="Details" asp-route-id="@restaurant.Id">More</a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-action="Create">Add Restaurant</a>
+
+@section footer {
+    @Model.CurrentMessage
+}
