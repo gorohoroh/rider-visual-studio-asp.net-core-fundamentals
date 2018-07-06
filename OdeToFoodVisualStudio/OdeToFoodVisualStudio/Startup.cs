@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using OdeToFoodVisualStudio.Data;
 using OdeToFoodVisualStudio.Services;
 using System;
 
@@ -12,6 +14,13 @@ namespace OdeToFoodVisualStudio
 {
     public class Startup
     {
+        private IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -19,7 +28,8 @@ namespace OdeToFoodVisualStudio
             // RDVS: Rider's completion works better with this generic method as it additionally adds the parentheses; additionally, VS overlaps the completion list inside the generic brackets
             // with with parameter info
             services.AddSingleton<IGreeter, Greeter>(); // singleton scope
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>(); // per-HTTP-request lifeime
+            services.AddDbContext<OdeToFoodDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("OdeToFood")));
+            services.AddScoped<IRestaurantData, SqlRestaurantData>(); // per-HTTP-request lifeime
             services.AddMvc();
         }
 
