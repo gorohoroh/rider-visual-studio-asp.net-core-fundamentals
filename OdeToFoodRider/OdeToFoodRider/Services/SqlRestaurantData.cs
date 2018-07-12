@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using OdeToFoodRider.Data;
 using OdeToFoodRider.Models;
 
@@ -17,6 +18,13 @@ namespace OdeToFoodRider.Services
         public Restaurant Add(Restaurant restaurant)
         {
             _context.Restaurants.Add(restaurant);
+            _context.SaveChanges();
+            return restaurant;
+        }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            _context.Attach(restaurant).State = EntityState.Modified;
             _context.SaveChanges();
             return restaurant;
         }

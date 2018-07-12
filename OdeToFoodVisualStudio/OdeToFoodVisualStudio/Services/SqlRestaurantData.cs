@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using OdeToFoodVisualStudio.Data;
 using OdeToFoodVisualStudio.Models;
 
@@ -32,6 +33,14 @@ namespace OdeToFoodVisualStudio.Services
         public IEnumerable<Restaurant> GetAll()
         {
             return _context.Restaurants.OrderBy(r => r.Name);
+        }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            _context.Attach(restaurant).State = EntityState.Modified;
+            // VSRD: Visual Studio provides a kind of smart completion for non-imported EntityState after equals, nice. Inserts an FQN though :(
+            _context.SaveChanges();
+            return restaurant;
         }
     }
 }
