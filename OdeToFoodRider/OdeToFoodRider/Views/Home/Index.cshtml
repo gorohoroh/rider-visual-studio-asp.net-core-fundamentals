@@ -5,26 +5,13 @@
 }
 
 <h1>All Restaurants</h1>
-@* VSRD: No table snippet in Rider. *@
-<table>
-    @* VSRD: No foreach live template here, just keyword completion like in Visual Studio *@
-    @foreach (var restaurant in Model.Restaurants)
-    {
-        <tr>
-            <td>@restaurant.Id</td>
-            <td>@restaurant.Name</td>
-            <td>
-                @* VSRD: Rider's path mapping functionality acts weird with the path below *@
-                <a href="/home/details/@restaurant.Id">Details</a>
-                @Html.ActionLink("Go", "Details", new {id = restaurant.Id})
-                <a asp-action="Details" asp-route-id="@restaurant.Id">More</a>
-                <a asp-page="/Restaurants/Edit" asp-route-id="@restaurant.Id">Edit</a>
-            </td>
-        </tr>
-    }
-</table>
 
-<a asp-action="Create">Add Restaurant</a>
+@foreach (var restaurant in Model.Restaurants)
+{
+    @Html.Partial("_Summary", restaurant)
+}
+
+<div ><a asp-action="Create">Add Restaurant</a></div>
 
 @section footer
 {
