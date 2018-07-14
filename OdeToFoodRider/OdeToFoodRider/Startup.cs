@@ -20,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using OdeToFoodRider.Data;
+using OdeToFoodRider.Middleware;
 using OdeToFoodRider.Services;
 
 namespace OdeToFoodRider
@@ -108,15 +109,9 @@ namespace OdeToFoodRider
 
             app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
             app.UseStaticFiles();
+            app.UseNodeModules(env.ContentRootPath);
             app.UseAuthentication();
             app.UseMvc(ConfigureRoutes);
-                        
-            app.Run(async (context) =>
-            {
-                var greeting = greeter.GetMessageOfTheDay();
-                context.Response.ContentType = "text/plain";
-                await context.Response.WriteAsync("Not found");
-            });
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)

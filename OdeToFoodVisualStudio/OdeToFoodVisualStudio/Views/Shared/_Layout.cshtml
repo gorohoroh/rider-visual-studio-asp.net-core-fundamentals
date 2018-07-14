@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div>
@@ -13,7 +14,7 @@
         @RenderSection("footer", required: false)
         @await Component.InvokeAsync("Greeter")
         <vc:greeter></vc:greeter>
-        @if(User.Identity.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated)
         {
             foreach (var identity in User.Identities)
             {
