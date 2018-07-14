@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OdeToFoodRider.Models;
@@ -5,6 +6,7 @@ using OdeToFoodRider.Services;
 
 namespace OdeToFoodRider.Pages.Restaurants
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly IRestaurantData _restaurantData;

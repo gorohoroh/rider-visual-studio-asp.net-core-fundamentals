@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OdeToFoodRider.Models;
 using OdeToFoodRider.Services;
@@ -6,6 +7,7 @@ using OdeToFoodRider.ViewModels;
 
 namespace OdeToFoodRider.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // VSRD: This time, "Initialize field from constructor" does exactly what we want.
@@ -19,6 +21,7 @@ namespace OdeToFoodRider.Controllers
         }
 
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             // VSRD: "Use object initialization" available in both IDEs but in Visual Studio, it's only available on the constructor call, not on further variable usages. 

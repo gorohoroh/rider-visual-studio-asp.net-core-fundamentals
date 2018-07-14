@@ -21,6 +21,7 @@ namespace OdeToFoodRider
                 .AddEnvironmentVariables()
                 .AddJsonFile("certificate.json", optional: true, reloadOnChange: true)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("github.json", optional: false, reloadOnChange: true)
                 .Build();
 
             var certificateSettings = config.GetSection("certificateSettings");
