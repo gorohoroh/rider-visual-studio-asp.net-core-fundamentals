@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,8 @@ namespace OdeToFoodVisualStudio
                 app.UseDeveloperExceptionPage();
             }
 
+            // RDVS: RewriteOptions suggested as FQN in Visual Studio's completion: Scott had to erase the FQN part and import namespace with a quick action
+            app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
             app.UseStaticFiles();
             app.UseMvc(ConfigureRoutes);
 
