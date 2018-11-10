@@ -40,3 +40,32 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
     <li>Multimonitor support: all UI related to creating a project is opened on a single display</li>
 </ol>
+
+<h2>Initial run of the application that we've just created</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Accepted <em>Default</em> run configuration settings, built, ran.</p>
+<p><em>Run</em> tool window says listening on port 5000, further requests going through the same port.</p>
+<p>Browser not automatically opened - however, clicking the link from the <em>Run</em> window works to open
+    in default browser.</p>
+<p>Stopping is clear: works with <em>Ctrl+C</em> in the <em>Run</em> tool window, as well as with a <em>Stop
+    Default</em> command.</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All good. Built, ran using the default IIS Express launch profile. Output window showing output from
+    ASP.NET Core Web Server, server says listening on port 17570, then requests going through a different
+    port (54448) set in generated <em>applicationhost.config</em>, default browser (Chrome) automatically
+    opened with the correct URL.</p>
+<p>Links from the <em>Output</em> window can be <em>Ctrl</em>+clicked, which is a tiny bit worse than what
+    Rider does.</p>
+<p>Stopping is not clear: can't <em>Ctrl+C</em> in the <em>Output</em> window, and no Stop command is
+    available in the <em>Debug</em> menu. The application can be either rerun from Visual Studio, or stopped
+    using the separate IIS Express UI:<br><img width="600" src="images/iis_express_ui.png">
+</p>
+
+<h3>Notes, issues, commits</h3>
+<p>I assume that the differences in start/stop experience are due to Visual Studio <a
+        href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/aspnet-core-module?view=aspnetcore-2.1">using
+    IIS Express as a proxy</a> to Kestrel and Rider using Kestrel
+    directly.
+</p>
