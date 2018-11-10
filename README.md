@@ -10,7 +10,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <ol>
     <li>In <em>New Solution</em> wizard, can't select a directory with the updated <em>Open File</em> dialog; have to
         enter path to parent directory manually in <em>Solution directory</em> text box; no recent directories
-        available:<br><img src="images/new_solution_select_folder.png">
+        available:<br><img src="images/new_solution_select_folder.png" width="600">
     </li>
     <li>Multimonitor support: Rider opened on display 1, <em>New Solution</em> wizard opened on display 2, then <em>Select
         Solution Directory</em> (<em>Open File</em>) opened on display 1 again
@@ -21,7 +21,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
             <li><em>Scratches and Consoles</em> node is visible (suboptimal, doesn't relate to the created project);
             </li>
             <li>Text editor area is empty, contains generic keymap hints<br><img
-                    src="images/solution_created_rider.png">
+                    src="images/solution_created_rider.png" width="600">
             </li>
         </ol>
     </li>
@@ -34,8 +34,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
             <li>Expanded to file level (good)</li>
             <li>Text editor area contains ASP.NET Code specific overview page with documentation links; <em>Connected
                 Services</em> and <em>Publish</em> panes are available for navigation<br><img
-                    src="images/solution_created_visual_studio.png"
-                    >
+                    src="images/solution_created_visual_studio.png" width="600">
             </li>
         </ol>
     </li>
