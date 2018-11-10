@@ -82,3 +82,55 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <p><em>Quick Info</em> tooltip is available on hover for valid <em>.csproj</em> elements:<br/>
     <img width="600" src="images/vs_csproj_quick_info.png">
 </p>
+
+<h2>Creating a configuration file (appsettings.json)</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Right-click project node &gt; <em>Add &gt; JSON file</em>. Just a generic JSON file template based on
+    WebStorm. No predefined name, empty content.</p>
+
+<h3>Observations: Visual Studio  :green_heart:</h3>
+<p>Right-click project node &gt; <em>Add &gt; New Item </em>(or <em>Ctrl+Shift+A</em>)<em> &gt; ASP.NET Core
+    &gt; ASP.NET Core Configuration File</em> (renamed to <em><u>App Settings File</u></em> in later VS
+    versions). Provides a predefined name (<em>appsettings.json</em>), default file template contains a
+    <code>ConnectionStrings: DefaultConnection</code> setting.<br>
+    <img width="600" src="images/vs_appsettings_json.png">
+</p>
+
+<h2>Modifying Startup.cs to use a value from appsettings.json</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Good editing experience in JSON and C#. Import popup more useful than explicitly calling <em>Ctrl+.</em>
+    in Visual Studio for importing a reference for <code>IConfiguration</code>.</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Good editing experience in JSON and C#. Complete Statement doesn't work in JSON though, and importing a
+    reference for <code>IConfiguration</code> is less obvious/comfortable than in Rider.</p>
+
+<h2>Creating and injecting a custom Greeter service instead of hardcoded settings value</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>All fine. Regular C# coding that involves Create from Usage and implementing interface members in a
+    derived class.</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All fine. Visual Studio handles Create from Usage and implementing interface members in a derived class,
+    although not exactly as polished as Rider - good enough though:</p>
+<ol>
+    <li>Visual Studio does allow implementing <code>IGreeter</code> from usage when the <code>Greeter</code>
+        class has been declared; however, Rider does have the advantage of providing the <em>Create derived
+            type</em> context action upon the <code>IGreeter</code> declaration.
+    </li>
+    <li>VS create from usage isn't quite on par right now: given the undeclared <code>IGreeter</code>
+        interface in method parameteres and the below line that uses an undeclared method,
+        <ol>
+            <li>The created symbol doesn't get focus: both when it's created in a separate file and when
+                it's created in the same file</li>
+            <li>Roslyn doesn't infer that the generated method should return a string, not an object
+            </li>
+        </ol>
+    </li>
+</ol>
+
+<h3>Notes, issues, commits</h3>
+<a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/972408e215db8f217a500e7c7ee4ecfe8353eecf">Commit link</a>
