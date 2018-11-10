@@ -6,7 +6,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h2>Creating a new ASP.NET Core Web Application with C# (Empty template)</h2>
 
-<h3>Observations: Rider</h3>
+<h3>Observations: Rider :yellow_heart:</h3>
 <ol>
     <li>In <em>New Solution</em> wizard, can't select a directory with the updated <em>Open File</em> dialog; have to
         enter path to parent directory manually in <em>Solution directory</em> text box; no recent directories
@@ -27,7 +27,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio</h3>
+<h3>Observations: Visual Studio :green_heart:</h3>
 <ol>
     <li><em>Solution Explorer</em>:
         <ol>
@@ -68,4 +68,17 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/aspnet-core-module?view=aspnetcore-2.1">using
     IIS Express as a proxy</a> to Kestrel and Rider using Kestrel
     directly.
+</p>
+
+<h2>Opening and editing project file</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Project file can be opened in text editor via <em>F4</em> or via right-click &gt; <em>Edit &gt; Edit
+    ....csproj</em>.</p>
+<p>No <em>Quick Info</em> available on elements.</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Project file can be opened in text editor via right-click &gt; <em>Edit project file</em>.</p>
+<p><em>Quick Info</em> tooltip is available on hover for valid <em>.csproj</em> elements:<br/>
+    <img width="600" src="images/vs_csproj_quick_info.png">
 </p>
