@@ -133,4 +133,68 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 </ol>
 
 <h3>Notes, issues, commits</h3>
-<a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/972408e215db8f217a500e7c7ee4ecfe8353eecf">Commit link</a>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/972408e215db8f217a500e7c7ee4ecfe8353eecf">Commit link</a></p>
+
+<h2>Configuring middleware: using IApplicationBuilder</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Good enough. Regular C# editing with certain issues both in Rider and Visual Studio. For example, Rider's
+    completion doesn't expect an identifier after the <code>async</code> keyword, so it starts to suggest
+    weird classes, and this is where completion on space hurts: I wanted to type an unresolved symbol,
+    <code>context</code>, but completion triggered on <em>Space</em> and inserted the unwanted
+    <code>ContextBoundObject</code>
+    class. Similar bad completion on unresolved symbol just below: wanted to use undeclared
+    <code>logger</code> to add it as parameter later, but got <code>Logger&lt;&gt;</code> completed instead.
+    See commit for details and context.</p>
+<p>Additionally, Rider displays annoying Parameter Info tooltip in random spots inside the delegate:<br/><img
+        width="600" src="images/rider_annoying_tooltip_with_delegates.png">
+</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Good enough. Regular C# editing with certain issues both in Rider and Visual Studio. For example, VS
+    completion breaks down after the <code>await</code> keyword - no longer suggests anything. Workaround:
+    type a sync statement first, then add the <code>await</code> keyword. Rider handles this just fine. See
+    commit for details and context.</p>
+
+<h3>Notes, issues, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/ad558809904c44af3a7f2aa3242958896c805c30">Commit link</a></p>
+
+<h2>Configuring middleware: showing exception details and configuring environment-specific middleware</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Good enough in terms of C# editing, although the "Use string interpolation" CA wasn't available when I
+    needed it:</p>
+<p><img width="600" src="images/rider_no_string_interpolation_ca.png">
+</p>
+<p>Rider doesn't pick environment or any other settings from <em>launchSettings.json</em> because it doesn't
+    support launch settings: neither are they created with the ASP.NET Core template nor are they reflected
+    in run configurations. Instead, environment variable settings in the default run configuration must be
+    edited to switch to a different environment:<br><br><img width="600" src="images/rider_environment_variables_via_run_configuration.png">
+</p>
+<p>Creating <em>appsettings.Development.json</em>:</p>
+<ol>
+    <li>Creating via copy-paste of <em>appsettings.json</em> works a little better than in Visual Studio
+        because Rider suggest entering a name for the copy before actually creating it, and then suggests
+        adding the new file to Git.
+    </li>
+    <li>However, Rider doesn't by default nest <em>appsettings.Development.json</em> under <em>appsettings.json</em>
+        as Visual Studio does. Had to click <em>File Nesting Settings</em> in the toolbar and manually enter
+        a nesting rule: <em>parent: .json, child: .Development.json</em>.<br><img width="600"
+                src="images/appsettings_nesting.png">
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Good enough in terms of C# editing.</p>
+<p>Launch settings are natively supported, as opposed to Rider.</p>
+<p><em>appsettings.Development.json</em> was automatically nested under <em>appsettings.json</em> and didn't
+    require any manual configuration.</p>
+
+<h3>Notes, issues, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/032855d2ac63c7bdca103045f5da2b01cda12405">Commit
+    link</a></p>
+<p>Issue: <a href="https://youtrack.jetbrains.com/issue/RIDER-4015">RIDER-4015: Build Configuration and
+    launchSettings.json (.NET Core)</a></p>
+<p>Neither in Visual Studio nor in Rider was I able to replicate Scott's exercise with displaying a Greeting
+    value from <em>appsettings.Development.json</em> for some reason - probably a configuration mishap on my
+    side.</p>
