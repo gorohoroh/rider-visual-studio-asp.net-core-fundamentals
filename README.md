@@ -990,3 +990,627 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/fd5b304e41feb597419fa3de8294adf7200b5b9f">Two</a></li>
 </ul>
 
+<h2>Executing EF Core migrations</h2>
+
+<h3>Observations: Rider :heart:</h3>
+<ol>
+    <li>Executing <code>dotnet ef migrations add InitialCreate</code> via the <em>Terminal</em> window: OK.
+    </li>
+    <li>Executing <code>dotnet ef database update</code> via the <em>Terminal</em> window: OK.</li>
+    <li>Checking that the database has been created via the <em>Database</em> window. Spent an hour trying
+        to figure out why I don't see the right databases in the instance I'm connected to, then
+        accidentally clicked the DB filter (:facepalm:):<br>
+        <img src="images/datagrip_connection_db_filter.png">
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<ol>
+    <li>Executing <code>dotnet ef migrations add InitialCreate</code> via Windows Command Prompt: OK.</li>
+    <li>Executing <code>dotnet ef database update</code> via Windows Command Prompt: OK.</li>
+    <li>Checking that the database has been created via <em>SQL Server Object Explorer</em> in Visual
+        Studio: OK.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/287e6525b2560056b1df747185f263831dda0e08">Commit link</a></p>
+
+<h2>Adding entries to the <em>Restaurants</em> table from the application and from IDE DB UI</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<ol>
+    <li><em>Database</em> view &gt; find DB &gt; table &gt; F4 to edit. OK if localDB is active; cryptic
+        error messages otherwise (had to refresh from Visual Studio to make the errors go away):<br>
+        <img width="600" src="images/datagrip_localdb_inactive.png"><br>
+        Editor is OK although <em>Alt+Ins</em> to add a row is less intuitive than in Visual Studio. To send
+        added/modified data to database, got to click <em>Submit</em>.<br>
+        <img width="600" src="images/rider_db_editor.png">
+    </li>
+    <li>Adding a new restaurant from application UI &gt; refreshing DB editor in Rider &gt; new data is
+        shown. Fine.
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<ol>
+    <li><em>SQL Server Object Explorer</em> &gt; DB &gt; table &gt; right-click &gt; <em>View Data</em> -
+        edit data in the editor, launch the application, see the data. Changes are committed to the DB
+        on-the-fly. Intuitive Excel-like editor UI:<img
+                width="600"
+                src="images/vs_db_editor.png">
+    </li>
+    <li>Adding a new restaurant from application UI &gt; refreshing DB editor in Visual Studio &gt; new data is shown.
+    </li>
+</ol>
+
+<h2>Creating a layout view and using it from the index view</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Rider does the job but there are issues in file templates and completion.</p>
+<ol>
+    <li>Creating a <em>Shared</em> folder and a layout view inside. Both folder and file are created via
+        <em>Alt+Ins</em>, which is fine. However, there's no file template for a Razor layout! Workaround:
+        create a regular view, call it <em>_Layout.cshtml</em>, remove the <code>@model</code> directive,
+        add <code>@ViewBag.Title</code> and <code>@RenderBody</code>.
+    </li>
+    <li>Removing redundant markup from <em>Index.cshtml.
+        Then </em>adding a title via <code>ViewBag</code>, as well as a path to layout. For layout path, there's
+        reference completion that suggests available views, and this looks fine; HOWEVER, if I go Scott's way and start
+        entering a file path from application root, the reference completion will hinder and eat the entered path as
+        soon as completion is committed:<br>
+        <img width="600" src="images/rider_mvc_layout_path_completion.gif">
+    </li>
+    <li>Adding a <code>@RenderSection</code> block to <em>_Layout.cshtml</em>: OK.</li>
+    <li>Adding a footer section to the <em>Index</em> view: OK.</li>
+</ol>
+<p>Time and again, Rider seems to reformat <em>.csproj</em> files automatically on adding new files. Looks
+    like RIDER-6450.</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job without notable issues.</p>
+<ol>
+    <li>Creating a <em>Shared</em> folder and a layout view (<em>Add New Item</em> -&gt; Razor layout, named
+        <em>_Layout.cshtml</em> by default) inside. Two different commands but OK, at least the layout item
+        template is there.
+    </li>
+    <li>Removing redundant markup from <em>Index.cshtml. Then </em>adding a title via <code>ViewBag</code>,
+        as well as a path to layout (no path completion).
+    </li>
+    <li>Adding a <code>@RenderSection</code> block to <em>_Layout.cshtml</em>: OK.</li>
+    <li>Adding a footer section to the <em>Index</em> view: OK.</li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/622e61cef13a5c6043784abffb0bfa0d5406f3d3">Commit link</a></p>
+
+<h2>Creating <em>_ViewStart.cshtml</em> and editing titles in other views</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>OK in Rider but a view start file template is missing.</p>
+<ol>
+    <li>Creating <em>_ViewStart.cshtml</em> in the <em>Views</em> folder: there's no Razor view start file template
+        available in the folder, nor are there any Razor templates. Workaround: use the generic file template.
+    </li>
+    <li>Editing <em>Create</em>, <em>Details</em> views to define titles and remove redundant HTML markup
+        (Rider's file templates for views contain more of it than Visual Studio's templates); editing the
+        <em>Index</em> view to remove a layout reference because it's now in <em>_ViewStart.cshtml</em>: OK.<br>
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All goes as expected in Visual Studio</p>
+<ol>
+    <li>Creating <em>_ViewStart.cshtml</em> in the <em>Views</em> folder: there's a special <em>Razor View
+        Start</em> file template with the correct name and default content. All fine.
+    </li>
+    <li>Editing <em>Create</em>, <em>Details</em> views to define titles; editing the <em>Index</em> view to
+        remove a layout reference because it's now in <em>_ViewStart.cshtml</em>: OK.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/b70b41ca6345c7fd5bf4d85a896e8aa6edd4b4c7">Commit link</a></p>
+
+<h2>Putting common using statements into <em>_ViewImports.cshtml</em></h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Rider does a far better job, thanks to completion and batch QFs.</p>
+<ol>
+    <li>Editing <em>_ViewImports.cshtml</em>: good, completion works well.</li>
+    <li>Going to the first view, and batch-executing two quick-fixes: <em>Remove unused directives</em> and
+        <em>Remove redundant qualifier</em>. Nice!<br><img
+                width="600"
+                src="images/rider_razor_unused_directives.png">
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does the job but requires too much manual work.</p>
+<ol>
+    <li>Editing <em>_ViewImports.cshtml</em>: OK, although FQN completion is clumsy.</li>
+    <li>Going through views to remove redundant using directives by hand: no quick actions to do this in
+        Razor files.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/043ba15a6f2c1b61d1df0ba6463720c322fabfeb">Commit link</a></p>
+
+<h2>Using Razor Pages</h2>
+
+<h3>Observations: Rider :heart:</h3>
+<p>It all goes wrong as soon as Rider fails to properly create an item for a Razor page; if this is
+    resolved, then the overall experience should be solid.</p>
+<ol>
+    <li>Creating a <em>Pages</em> folder: fine. Creating a Razor Page: no file template for Razor Pages;
+        workaround: create a regular MVC view.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em>: OK, though no completion after @page directive.</li>
+    <li>Copy/pasting <em>_ViewImports</em> and <em>_ViewStart</em> to the <em>Pages</em> folder, editing
+        <em>_ViewImports</em> to use more namespaces: OdeToFoodRider.Pages (the Razor page code-behind) is
+        unresolved:<br>
+        <img width="600" src="images/rider_pages_unresolved.png">
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> by adding an <code>@inject</code> directive: good! Rider even suggests a name
+        for the injected property.
+    </li>
+    <li>Editing <em>ViewStart</em> to use a <em>_Layout.cshtml</em> in the <em>Pages</em> folder (which is not there).
+        Rider highlights the reference "_Layout.cshtml" with red but doesn't suggest to create a page. Copy-pasting by
+        hand doesn't remove red highlighting: Rider doesn't seem to understand the file system-based way to reference a
+        layout in this case.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> to use a <code>@model</code> instead of <code>@inject</code>. Model is
+        unresolved (because code-behind hadn't been generated); creating from usage creates a regular class in the Pages
+        directory, instead of a nested <em>Greeting.cshtml.cs</em>. Have to rename, after which it's properly nested.
+        Changing namespace in the code-behind to .Pages fixes resolve from <em>ViewImports</em>.<br>
+        <img width="600" src="images/rider_pages_codebehind_nesting.png">
+    </li>
+    <li>Editing code-behind: injecting service, creating <code>OnGet()</code> and displaying message of the day: all
+        fine but <code>OnGet()</code> highlighted as never used.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> to render a property on the code-behind, and adding a required
+        parameter via the <code>@page</code> directive; editing code-behind to make use of the parameter:
+        OK.
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does the job - nothing special though. A few code completion/code analysis issues along the
+    way.</p>
+<ol>
+    <li>Creating a <em>Pages</em> folder, adding a page via <em>New Item &gt; Razor Pages &gt; Razor
+        Page</em> (additional templates include <em>Razor Page using EF</em> and <em>Razor Page using EF
+        (CRUD)</em>) called <em>Greeting.cshtml</em>. All fine.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em>: code completion for C# references is there.</li>
+    <li>Copy/pasting <em>_ViewImports</em> and <em>_ViewStart</em> to the <em>Pages</em> folder, editing
+        <em>_ViewImports</em> to use more namespaces.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> by adding an <code>@inject</code> directive (and Scott is having
+        all kinds of issues with VS showing red code because of files not saved).
+    </li>
+    <li>Editing <em>ViewStart</em> to use a <em>_Layout.cshtml</em> in the <em>Pages</em> folder (which is
+        not there); copy-pasting existing <em>_Layout.cshtml</em> to the <em>Pages</em> folder.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> to use a <code>@model</code> instead of <code>@inject</code>. This
+        generates a code-behind file (<em>Greeting.cshtml.cs</em>, or was it there since adding the Razor
+        page?<em>) </em>and also shows a nested and seemingly
+        redundant<em>_Pages_Greeting</em>:<br>
+        <img width="600" src="images/vs_razor_pages_codebehind.png">
+    </li>
+    <li>Editing code-behind: injecting service, getting message of the day within <code>OnGet()</code>.</li>
+    <li>Editing <em>Greeting.cshtml</em> to render a property on the code-behind, and adding a required
+        parameter via the <code>@page</code> directive; editing code-behind to make use of the parameter
+        (adding string interpolation)
+    </li>
+</ol>
+<p>Visual Studio has at some point modified the .sln file to change project GUID. Made a similar change in
+    Rider manually.</p>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/e7d3fbbe9cf6699099a9923f463149a4f737ad0f">Commit link</a></p>
+
+<h2>Adding the Edit form using Razor Pages</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Rider provides a few nice features but again, there's no way to easily create a Razor page with
+    code-behind + there's an array of minor annoying bugs. Yellow because the Red flag for the lack of the
+    file template had already been given.</p>
+<ol>
+    <li>Adding a new <em>Pages/Restaurants </em>directory and <em>Edit.cshtml</em> Razor page. Again, no Razor Page file
+        template, had to apply a workaround by creating a Razor view + codebehind file (which was created with a weird
+        <code>ASP</code> namespace instead of the proper <code>OdeToFoodVisualStudio.Pages.Restaurants)</code>.
+        After misplacing the new Razor page file, moved it to the right directory with <em>Move to Folder</em>, which
+        introduced a line ending-only change in <em>.csproj</em>. Editing the Razor page triggered a flow of exceptions
+        in Rangeable container, Rider protocol, typing assists etc. Unfortunately this is not easily reproducible, so
+        just updated Rider to the latest nightly instead.
+    </li>
+    <li>Adding a link to the new page from the <em>Index</em> view: OK</li>
+    <li>Copying over a form from the <em>Create</em> view to <em>Edit.cshtml</em> and adapting. Again,
+        completion at <code>asp-for</code> could be better. Otherwise fine, especially nice to be able to
+        use the <em>Change All</em> quick-fix to correct copy-pasted model references:<br>
+        <img width="600" src="images/rider_change_all.png">
+    </li>
+    <li>Adding the <code>Update()</code> method to <code>IRestaurantData</code> and derived types. CA
+        Implement in derived types and its type selector: nice!<br>
+        <img width="600" src="images/rider_derived_disambiguation.png"><br>
+        Shortcut completion for enum members is nice, too:<br>
+        <img width="600" src="images/rider_enum_combo_completion.png"><br>
+        Overall very solid editing experience.
+    </li>
+    <li>Editing the <em>Edit</em> page's code-behind. Attribute completion strikes again! <em>Introduce
+        readonly field</em> quick-fix from constructor is useful here, again (although every time I hesitate
+        over the generated field should in fact be read-only). <code>OnGet()</code>, <code>OnPost()</code>
+        are highlighted as unused. Action and controller arguments of <code>RedirectToAction()</code> are
+        highlighted as regular string literals, as opposed to their special treatment in MVC
+        controllers:<br>
+        <img width="600" src="images/rider_page_controller_action_parameters.png"><br>
+        The <em>if</em> live template continues to be deployed into a weird <code>if(b)</code>. Otherwise fine.
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>VS gets the job done, with usual small annoyances (no import completion, shaky code analysis in Razor
+    page view etc.)</p>
+<ol>
+    <li>Adding a new <em>Pages/Restaurants</em> directory and <em>Edit.cshtml</em> Razor page (file template
+        with code-behind).
+    </li>
+    <li>Adding a link to the new page from the <em>Index</em> view.</li>
+    <li>Copying over a form from the <em>Create</em> view to <em>Edit.cshtml</em> and adapting (such as
+        adding a hidden input for restaurant ID).
+    </li>
+    <li>Adding the <code>Update()</code> method to <code>IRestaurantData</code> and derived types (just a
+        stub in <code>InMemoryRestaurantData</code>)
+    </li>
+    <li>Editing <em>Edit</em> page code-behind with a constructor accepting an <code>IRestaurantData</code>
+        and saving to a field, a bind property to hold and update restaurant information, implementing
+        <code>OnGet(int id)</code> and adding <code>OnPost()</code> with model validation.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/d721c764a7b1e77225ffbc9f230e296336dbbd00">Commit link</a></p>
+
+<h2>Refactoring the <em>Index</em> view to use a new <em>_Summary</em> partial view
+</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Rider works well enough. Creating views from usage doesn't work here for whatever reason but Visual
+    Studio doesn't have that, too. On par with VS although there are bugs to be reported.</p>
+<ol>
+    <li>Editing the <em>Index</em> view to use a partial view for each restaurant summary. View completion in string
+        literals is nice! We need to reference a view that's not created yet though. Removing the table is easier with
+        <em>Extend Selection</em> (which in Visual Studio is only available in C#). Surrounding the <em>Create</em>
+        action link with a <em>div</em> via <em>Surround With</em> works but does so in a weird way, using the <code>&lt;a/&gt;</code>
+        tag by default, and putting a hotspot on the closing tag instead of the opening tag.
+    </li>
+    <li>Creating a <em>_Summary.cshtml</em> partial view, and it looks like we can do that from
+        usage!<br>
+        <img width="600" src="images/rider_create_partial_from_usage.png"><br>
+        HOWEVER, it looks like no, we can't - for no particular reason:<br>
+        <img width="600" src="images/rider_cant_create_view.png"><br>
+        OK, creating from live template then.
+    </li>
+    <li>Editing <em>_Summary.cshtml</em>. No sync-editing of HTML tags, and on a mismatch between the opening and the
+        closing tag, the <em>Insert closing tag</em> quick-fix adds a new closing tag instead of replacing the
+        mismatching one. Otherwise fine; using <em>Change All</em> again to replace a variable with <code>Model</code>.
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All fine in Visual Studio.</p>
+<ol>
+    <li>Editing the <em>Index</em> view to use a partial view for each restaurant summary instead of a
+        table.
+    </li>
+    <li>Creating a <em>_Summary.cshtml</em> partial view under <em>Views/Home</em> with <em>Add New
+        Item</em>. Adding markup to display a restaurant summary. Copying links to <em>Details</em> and <em>Edit</em>
+        views from <em>Index.cshtml</em> and adapting them.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/7c2db6646dbb28c302e0b97862b47f1e05fb0fc7">Commit link</a></p>
+
+<h2>Moving the footer section to a new view component</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Rider makes a statement to be better with the quick-fix to create view component views from usage -
+    however, the quick-fix is unfortunately broken.</p>
+<ol>
+    <li>Creating a <em>ViewComponents</em> folder and a <em>GreeterViewComponent.cs</em> class inside; adding logic to
+        the class. All good, <em>Create readonly field from constructor parameter</em> helps again.
+    </li>
+    <li>Trying to create the <em>Default</em> view for the view component with a quick-fix:<br>
+        <img width="600" src="images/rider_create_view_component_view.png"><br>
+        It doesn't work unfortunately, throwing DEXP-361709 along the way. OK, creating manually, which is less 
+        cumbersome to do than in Visual Studio anyway. Adding simple view content, all fine.
+    </li>
+    <li>Editing <em>_Layout.cshtml</em> to invoke the view component in two ways. Completion for view component class in
+        string literals is a nice surprise:<br>
+        <img width="600" src="images/rider_component_invoke_completion.png"><br>
+        Neither Rider nor Visual Studio provide completion for the tag helper syntax. Adding a directive to 
+        <em>_ViewImports.cshtml</em> - OK although there's no completion for namespaces (much like Visual Studio)ю
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job at its usual standard although creating the directory hierarchy for view
+    component view is particularly tricky.</p>
+<ol>
+    <li>Creating a <em>ViewComponents</em> folder and a <em>GreeterViewComponent.cs</em> class inside.
+        Adding a constructor and the <code>Invoke()</code> method referencing a view that doesn't exist yet.
+    </li>
+    <li>Removing the footer section from <em>Index.cshtml</em> as it's going to be a view component.</li>
+    <li>Under <em>Views/Shared</em>, creating directory hierarchy <em>Components/Greeter</em>, and a new
+        Razor view inside to be used by the view component: <em>Default.cshtml</em>. Creating these 3 items is a bit 
+        painful in VS. Very few edits to the view.
+    </li>
+    <li>Editing <em>_Layout.cshtml</em> to include 2 alternative ways of invoking the view component. One of
+        them, the tag helper way, requires adding another directive to <em>_ViewImports.cshtml</em> - by
+        hand.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/d1e4e4af7104e2591856468513a49413b9e1fd51">Commit link</a></p>
+
+<h2>Switching over to using SSL</h2>
+
+<h3>Observations: Rider :heart:</h3>
+<p>Poor experience. Running ASP.NET Core on IIS Express is not supported (RIDER-11638), thus
+    you need to search for and go through a way to configure Kestrel to use SSL, which is not trivial. You
+    also have to take care of generating a certificate with a PowerShell script on Windows or using a
+    separate procedure on Mac/Unix.</p>
+<ol>
+    <li>Switching to use SSL. Since Rider uses Kestrel directly, and even if it did use IIS Express as a
+        proxy, it doesn't understand <em>launchsettings.json</em>, I need to set up SSL in Kestrel instead.
+        Rider doesn't help at all with generating a certificate. Had to generate a certificate and configure
+        Kestrel to use HTTPS and the certificate based on <a
+                href="https://www.humankode.com/asp-net-core/develop-locally-with-https-self-signed-certificates-and-asp-net-core">this
+            guide</a>. (<a
+                href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore2x&amp;view=aspnetcore-2.0#endpoint-configuration">Microsoft's
+            own documentation</a> is way less helpful.)
+        Quite a painful and time-consuming process.
+    </li>
+    <li>Adding <code>Rewriter()</code> middleware - OK.</li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio makes the process easy. Automating the generation of a self-signed certificate is
+    especially appreciated.</p>
+<ol>
+    <li>Switching to use SSL: <em>Project properties &gt; Debug &gt; Enable SSL</em>. A new URL is
+        generated, copying it to the adjacent <em>App URL</em> setting. The actual settings are stored in
+        <em>launchSettings.json &gt; iisExpress</em>. When first trying to start an application that is
+        configured to use SSL, Visual Studio suggests that a self-signed certificate is generated by IIS
+        Express for development purposes, and then suggests to trust the certificate.
+    </li>
+    <li>Adding the <code>Rewriter()</code> middleware to <em>Startup.cs</em> with an option to permanently
+        redirect all HTTP to HTTPS requests.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p>Commits:</p>
+<ul>
+    <li><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/67fb3ecd90b9c86a787f11fe5ad64a92ef7823e7">One</a></li>
+    <li><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/f846341162bc4d0f067c7084959e47f942f89485">Two</a></li>
+</ul>
+
+<h2>Registering with an OpenID provider, adding OpenID configuration, configuring services and middleware, marking
+    controllers, actions and page code-behind to use authorization
+</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Rider does the job albeit with its own share of annoyances (import completion in attributes!)
+    Copy-pasting code in Rider is enjoyable though, thanks to import suggestion that adds all imports at
+    once.</p>
+<ol>
+    <li>Using two GitHub app registrations (separate for Rider and Visual Studio).</li>
+    <li>Adding OAuth-related JSON settings file, modifying <em>Startup.cs</em> and <em>Program.cs</em> to
+        implement GitHub-based OAuth, using the same mix of Scott's video and a .NET Core/GitHub-focused
+        tutorial as in the Visual Studio part. Copy-pasting parts from Visual Studio, and the import pop-up
+        rocks in that it imports everything at once!
+    </li>
+    <li>Marking the <em>Home</em> controller and its actions, as well as the <u><em>Edit</em></u> page
+        code-behind with <code>[Authorize]</code> and <code>[AllowAnonymous]</code> attributes. Import
+        completion in attributes strikes again!
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job, with some annoyances like no import items in completion (which bites in OAuth
+    configuration).</p>
+<ol>
+    <li>Scott creates an app registration using his Azure AD B2C user account:<br>
+        <img width="600" src="images/azure_app_registration.png"><br>
+        I registered two OAuth apps (one for Rider and one for Visual Studio) with my GitHub account instead.
+    </li>
+    <li>Adding OAuth-related settings, modifying <em>Startup.cs</em> and <em>Program.cs</em> - a mix of
+        Scott's actions and <a href="https://www.jerriepelser.com/blog/authenticate-oauth-aspnet-core-2/">this tutorial</a> 
+        that is .NET Core/GitHub-specific. All regular C# and a bit of JSON editing. Fine but again, no import items in
+        completion is a pain in Visual Studio. Also, copy-pasting isn't enjoyable as each unimported symbol
+        must be imported with a separate quick action. Rider/ReSharper are way better in this regard.
+    </li>
+    <li>Marking the <em>Home</em> controller and its actions, as well as the <u><em>Edit</em></u> page
+        code-behind with <code>[Authorize]</code> and <code>[AllowAnonymous]</code> attributes.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/170462ecf4d0bfb1296acd0c782079b89aa190f5">Commit link</a></p>
+
+<h2>Displaying information about user identity</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Adding markup and code to <em>_Layout.cshtml</em> that goes through user identity information and displays claim
+    values. Regular Razor editing. All good.
+</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Adding markup and code to <em>_Layout.cshtml</em> that goes through user identity information and
+    displays claim values. Regular Razor editing. All fine.</p>
+
+<h3>Notes, commits</h3>
+<p>
+    <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/842201431ba9b26ac2be500d132afce343daf74d">Commit
+        link</a></p>
+
+<h2>Adding <em>package.json</em> and installing bootstrap</h2>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>Very solid experience in Rider, too. No dependency indication in Solution Explorer but overall smoother
+    in terms of adding and editing <em>package.json</em>. Explicitly suggesting to start installing
+    dependencies is probably a safer approach, too.</p>
+<ol>
+    <li>Adding <em>package.json</em> to the project via WebStorm's file template, which suggests a name
+        based on project name - nice touch!
+    </li>
+    <li>Adding a <em>bootstrap</em> dependency. Completion in package.json is on par with Visual Studio, it
+        looks like it even works faster. Rider doesn't auto-install but instead, suggests to install
+        dependencies, and does that if I allow it to:<br>
+        <img width="600" src="images/rider_install_dependencies.png"><br>
+        The only downside is that there's no npm node in the project's Dependencies node in Solution Explorer,
+        so you can only see there are installed dependencies if you choose to <em>Show all files</em>.
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Polished experience in Visual Studio. npm dependency indication in Solution Explorer is a nice bonus. The
+    default content of <em>package.json</em> is a bit different from Rider.</p>
+<ol>
+    <li>Adding <em>package.json</em> to the project via <em>Add new item</em> -&gt; <em>npm configuration
+        file</em> template. This introduces a new <em>npm</em> node in project dependencies. (<em>node_folders</em>
+        isn't shown by default though, unless <em>Show all files</em> is on.
+    </li>
+    <li>Adding a <em>bootstrap</em> dependency in <em>package.json</em> &gt; saving &gt; Visual Studio
+        auto-installs the package. Completion in <em>package.json</em> is very solid: both for property
+        names (incl. packages available in npm) and values (versions of the packages).
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/6072aa78ed103827fd1d2d06d61740605c43acc8">Commit link</a></p>
+
+<h2>Writing an application builder extension method to enable serving files from <em>node_modules</em> (as
+    an alternative to using something like gulp or grunt)
+</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Rider: also up and down. Not being able to create extension methods from usage is sad. Completion issues
+    in paths are annoying, too. C# editing is good though, so let's make it even.</p>
+<ol>
+    <li>Adding an undeclared application builder extension method to <em>Startup.cs</em> that would enable serving
+        static files. Shocking fact: Rider can't create an extension method from usage, either:<br>
+        <img width="600" src="images/rider_extension_method_no_create_from_usage.png">
+    </li>
+    <li>Adding a <em>Middleware</em> folder and a new class in it to implement the extension method. Smooth C# editing.
+        Rider shows the extension method on call site without having to put it into an external namespace.
+    </li>
+    <li>
+        Editing <em>_Layout.cshtml</em> to refer to <em>bootstrap.css</em> in <em>node_modules</em>. Writing a link by
+        hand. Rider doesn't recognize the ~-starting path and doesn't provide no sensible completion when you write the
+        path. (A similar path problem occurred earlier in the course, see above.)
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio: decent experience with ups and downs: drag-and-drop CSS to put a link reference to it is
+    nice, but having to use an external namespace to enable code completion is not.</p>
+<ol>
+    <li>Adding an undeclared application builder extension method to <em>Startup.cs</em> that would enable
+        serving static files. Visual Studio can't create extension methods from usage.
+    </li>
+    <li>Adding a <em>Middleware</em> folder and a new class in it to implement the extension method. Putting
+        the class in the <code>Microsoft.AspNetCore.Builder</code> namespace to enable Visual Studio's code
+        completion to see it (
+    </li>
+    <li>Editing <em>_Layout.cshtml</em> to refer to <em>bootstrap.css</em> in <em>node_modules</em>. Visual
+        Studio can generate a link tag with the right path when you drag-and-drop <em>bootstrap.css</em>
+        from Solution Explorer, quite a nice touch.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p>
+    <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/1ece66e0bc1ca897d0cd7d0e161427633b580462">Commit
+        link</a></p>
+
+<h2>Styling views with bootstrap</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Adding bootstrap classes to various elements across Razor views and layouts. Completion is unhelpful, too, and as in
+    Visual Studio, it's probably hippie completion. I assume that these problems are related to the way <em>bootstrap.css</em>
+    is referenced in <em>_Layout.cshtml</em>.
+</p>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Adding bootstrap classes to various elements across Razor views and layouts. Visual Studio's code
+    completion isn't helpful at all (suggests certain bootstrap classes but they aren't what I need every
+    single time - this is probably hippie completion for class names that were already used).</p>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/0b8071413e2336482aeb8e7d8603c7397adda0d3">Commit link</a></p>
+
+<h2>Adding client-side validation</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Rider is doing great in terms of package.json editing but disappoints when editing script references
+    (path completion).</p>
+<ol>
+    <li>Adding a few more dependencies into <em>package.json</em>. The <em>Update Dependencies</em> popup is late to
+        show up this time but there's also a quick-fix to run npm install that is available earlier, nice!<br>
+        <img width="600" src="images/rider_qf_npm_install.png">
+    </li>
+    <li>Typing script references by hand. Tried to go up to project folder in path completion but weirdly enough, it
+        doesn't see the <em>node_modules</em> directory at all:<br>
+        <img width="600" src="images/rider_completion_no_node_modules.png"><br>
+        It's a bit better when completing from root this
+        time (<em>node_modules</em> can be seen on <code>~/{caret}</code>) but after the next slash, path completion
+        starts to look into project root instead of showing what's inside <em>node_modules</em>:<br>
+        <img width="600" src="images/rider_path_completion_flaky.png">
+    </li>
+</ol>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All fine in Visual Studio. Well, maybe generating script/link references with drag-and-drop is not as
+    nice as I thought, as it requires quite a bit of precise mouse manipulation and adding new lines in the
+    editor beforehand.</p>
+<ol>
+    <li>Adding a few more dependencies into <em>package.json</em>, they're then auto-installed.</li>
+    <li>Drag-and-dropping each of the installed dependencies into <em>_Layout.cshtml</em> to generate script
+        references to them.
+    </li>
+</ol>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/7b546b8429b5c5d3bbc5543477419374f4021d84">Commit link</a></p>
+
+<h2>Using CDNs in production environment</h2>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Wrapping with tags is more fluid with surround templates but there's a bug whereby after applying the
+    surround template, a hotspot is put in the closing tag (this already occurred in one of the prior
+    segments).</p>
+<p>Unfortunately, Rider provides zero completion both for the <code>&lt;environment/&gt;</code> tag, its
+    attributes and values, as well as for the tag helpers that are available inside the
+    <code>&lt;link/&gt;</code> and <code>&lt;script/&gt;</code> tags (<code>asp-fallback-test-class</code>
+    etc.).</p>
+<p>This is missing functionality but let's go with yellow instead of red as this isn't a very mainstream
+    scenario.</p>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Wrapping script and link references in <em>_Layout.cshtml</em> with the <code>&lt;environment/&gt;</code>
+    tag and using various ASP.NET tag helpers to test if scripts and stylesheets have in fact been delivered
+    from a CDN.</p>
+<p>Visual Studio does a very good job providing code completion for tag helper attributes in the <code>&lt;link/&gt;</code>
+    tag:<br>
+    <img width="600" src="images/vs_link_completion_tag_helpers.png">
+</p>
+<p>Wrapping markup with tags is a bit cumbersome though.</p>
+
+<h3>Notes, commits</h3>
+<p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/b1cc9ec815717ec2d110822921107c4d83a57cb2">Commit link</a></p>
