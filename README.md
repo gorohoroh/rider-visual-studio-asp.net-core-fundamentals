@@ -10,31 +10,31 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <ol>
     <li><em>Solution Explorer</em>:
         <ol>
-            <li>Expanded to file level (good)</li>
-            <li>Text editor area contains ASP.NET Code specific overview page with documentation links; <em>Connected
-                Services</em> and <em>Publish</em> panes are available for navigation<br><img
+            <li>Initially expanded to file level (good).</li>
+            <li>Text editor area contains ASP.NET Core specific overview page with documentation links; <em>Connected
+                Services</em> and <em>Publish</em> panes are available for navigation:<br><img
                     src="images/solution_created_visual_studio.png" width="600">
             </li>
         </ol>
     </li>
-    <li>Multimonitor support: all UI related to creating a project is opened on a single display</li>
+    <li>Multimonitor support: all UI related to creating a project is shown on a single display.</li>
 </ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <ol>
-    <li>In <em>New Solution</em> wizard, can't select a directory with the updated <em>Open File</em> dialog; have to
-        enter path to parent directory manually in <em>Solution directory</em> text box; no recent directories
-        available:<br><img src="images/new_solution_select_folder.png" width="600">
+    <li>In <em>New Solution</em> wizard, I can't select a directory using the updated <em>Open File</em> dialog; I have to
+        enter the path to parent directory manually in the <em>Solution directory</em> text box, and no recent directories
+        are available:<br><img src="images/new_solution_select_folder.png" width="600">
     </li>
     <li>Multimonitor support: Rider opened on display 1, <em>New Solution</em> wizard opened on display 2, then <em>Select
-        Solution Directory</em> (<em>Open File</em>) opened on display 1 again
+        Solution Directory</em> (<em>Open File</em>) opened on display 1 again.
     </li>
     <li>Initial IDE layout:
         <ol>
-            <li><em>Solution Explorer</em>'s solution node is collapsed (suboptimal),</li>
+            <li><em>Solution Explorer</em>'s solution node is collapsed (suboptimal);</li>
             <li><em>Scratches and Consoles</em> node is visible (suboptimal, doesn't relate to the created project);
             </li>
-            <li>Text editor area is empty, contains generic keymap hints<br><img
+            <li>Text editor area is empty, contains generic keymap hints:<br><img
                     src="images/solution_created_rider.png" width="600">
             </li>
         </ol>
@@ -44,13 +44,13 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <h2>Initial run of the application that we've just created</h2>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
-<p>All good. Built, ran using the default IIS Express launch profile. Output window showing output from
+<p>All good. Built, ran using the default <em>IIS Express</em> launch profile. <em>Output</em> window shows output from
     ASP.NET Core Web Server, server says listening on port 17570, then requests going through a different
     port (54448) set in generated <em>applicationhost.config</em>, default browser (Chrome) automatically
-    opened with the correct URL.</p>
-<p>Links from the <em>Output</em> window can be <em>Ctrl</em>+clicked, which is a tiny bit worse than what
+    opens with the correct URL.</p>
+<p>Links from the <em>Output</em> window can be <kbd>Ctrl</kbd>+clicked, which is a tiny bit worse than what
     Rider does.</p>
-<p>Stopping is not clear: can't <em>Ctrl+C</em> in the <em>Output</em> window, and no Stop command is
+<p>Stopping is not clear: can't <kbd>Ctrl+C</kbd> in the <em>Output</em> window, and no <em>Stop</em> command is
     available in the <em>Debug</em> menu. The application can be either rerun from Visual Studio, or stopped
     using the separate IIS Express UI:<br><img src="images/iis_express_ui.png">
 </p>
@@ -60,7 +60,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <p><em>Run</em> tool window says listening on port 5000, further requests going through the same port.</p>
 <p>Browser not automatically opened - however, clicking the link from the <em>Run</em> window works to open
     in default browser.</p>
-<p>Stopping is clear: works with <em>Ctrl+C</em> in the <em>Run</em> tool window, as well as with a <em>Stop
+<p>Stopping is clear: works with <kbd>Ctrl+C</kbd> in the <em>Run</em> tool window, as well as with the <em>Stop
     Default</em> command.</p>
 
 <h3>Notes, commits</h3>
@@ -70,31 +70,31 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     directly.
 </p>
 
-<h2>Opening and editing project file</h2>
+<h2>Opening and editing a project file</h2>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
-<p>Project file can be opened in text editor via right-click &gt; <em>Edit project file</em>.</p>
+<p>A project file can be opened in the text editor via right-click &gt; <em>Edit project file</em>.</p>
 <p><em>Quick Info</em> tooltip is available on hover for valid <em>.csproj</em> elements:<br/>
     <img width="600" src="images/vs_csproj_quick_info.png">
 </p>
 
 <h3>Observations: Rider :green_heart:</h3>
-<p>Project file can be opened in text editor via <em>F4</em> or via right-click &gt; <em>Edit &gt; Edit
+<p>A project file can be opened in the text editor via <kbd>F4</kbd> or via right-click &gt; <em>Edit &gt; Edit
     ....csproj</em>.</p>
-<p>No <em>Quick Info</em> available on elements.</p>
+<p>No <em>Quick Info</em> is available on elements.</p>
 
 <h2>Creating a configuration file (appsettings.json)</h2>
 
 <h3>Observations: Visual Studio  :green_heart:</h3>
-<p>Right-click project node &gt; <em>Add &gt; New Item </em>(or <em>Ctrl+Shift+A</em>)<em> &gt; ASP.NET Core
-    &gt; ASP.NET Core Configuration File</em> (renamed to <em><u>App Settings File</u></em> in later VS
-    versions). Provides a predefined name (<em>appsettings.json</em>), default file template contains a
-    <code>ConnectionStrings: DefaultConnection</code> setting.<br>
+<p>Right-click a project node &gt; <em>Add &gt; New Item </em>(or <kbd>Ctrl+Shift+A</kbd>)<em> &gt; ASP.NET Core
+    &gt; ASP.NET Core Configuration File</em> (renamed to <em>App Settings File</em> in later VS
+    versions). This provides a predefined name (<em>appsettings.json</em>), and the default file template contains a
+    <code>ConnectionStrings: DefaultConnection</code> setting:<br>
     <img width="600" src="images/vs_appsettings_json.png">
 </p>
 
 <h3>Observations: Rider :yellow_heart:</h3>
-<p>Right-click project node &gt; <em>Add &gt; JSON file</em>. Just a generic JSON file template based on
+<p>Right-click a project node &gt; <em>Add &gt; JSON file</em>. Just a generic JSON file template provided by
     WebStorm. No predefined name, empty content.</p>
 
 <h2>Modifying Startup.cs to use a value from appsettings.json</h2>
