@@ -52,7 +52,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     Rider does.</p>
 <p>Stopping is not clear: can't <em>Ctrl+C</em> in the <em>Output</em> window, and no Stop command is
     available in the <em>Debug</em> menu. The application can be either rerun from Visual Studio, or stopped
-    using the separate IIS Express UI:<br><img width="600" src="images/iis_express_ui.png">
+    using the separate IIS Express UI:<br><img src="images/iis_express_ui.png">
 </p>
 
 <h3>Observations: Rider :green_heart:</h3>
@@ -233,7 +233,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     like the below. Visual Studio suggest the expected <code>UseStaticFiles()</code> method matching <code>usf</code>;
     Rider suggests <code>UseDefaultFiles()</code> instead, both when matching with <code>usf</code> and
     <code>USF</code> (!!!!):<br/>
-    <img width="600" src="images/camelcase_completion_vs.png">
+    <img src="images/camelcase_completion_vs.png">
     <br/>
     vs<br/>
     <img width="600" src="images/camelcase_completion_rider.png">
@@ -262,8 +262,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Editing C# attributes works fine; however, import completion for the Route attribute is severely hanging:<br/>
-    <img  width="600"
-          src="images/rider_attribute_import_completion.png">
+    <img src="images/rider_attribute_import_completion.png">
 </p>
 
 <h3>Notes, commits</h3>
@@ -361,7 +360,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <p>The better way to move <em>IGreeter.cs</em> to the new directory is certainly via Refactor This &gt; Move
     to Folder on the file node in Solution Explorer. Invoking the refactoring with default settings (that
     include fixing namespaces) just works. Good job:<br/>
-    <img width="600" src="images/rider_move_to_folder.png">
+    <img src="images/rider_move_to_folder.png">
 </p>
 
 <h3>Notes, commits</h3>
@@ -429,14 +428,14 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
     <li>Creating <code>InMemoryRestaurantData</code> class: can be done with <em>Alt+Ins</em> but can also
         be done easier with a context action on <code>IRestaurantData</code> declaration to create a derived
-        type:<br><img width="600" src="images/rider_create_derived_type.png"><br>
+        type:<br><img src="images/rider_create_derived_type.png"><br>
         Then, there's a quick-fix to implement the interface, and a context action to move to a separate file.
     </li>
     <li>Writing code in <code>InMemoryRestaurantData</code>: good. Notes:
         <ol>
             <li>Quick-fix <em>Initialize field from constructor</em> is available after declaring the
                 <code>_restaurants</code> field:<br>
-                <img width="600" src="images/rider_initialize_field_from_constructor.png"><br>However,
+                <img src="images/rider_initialize_field_from_constructor.png"><br>However,
                 the created constructor takes a list of restaurants as a parameter; what we need instead is
                 a parameterless constructor with a field inside that is initialized with a new list. No
                 context action or refactoring to convert parameter to field initialization, and the <em>Change
@@ -569,24 +568,24 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
             <li>A null check on model is easier to introduce with the <em>Check variable for null</em>
                 context action that is conveniently available at the end of the statement; a quick path to
                 null check pattern settings is provided, too - nice!<br>
-                <img width="600" src="images/rider_check_variable_for_null.png">
+                <img src="images/rider_check_variable_for_null.png">
             </li>
             <li>When returning <code>RedirectToAction("Index")</code>, Rider provides code completion for actions in
                 the string literal that is passed over as parameter as well as navigation to action, nice!<br>
-                <img width="600" src="images/rider_view_completion_in_string_literals.png"><br>
+                <img src="images/rider_view_completion_in_string_literals.png"><br>
                 Using <code>nameof(Index)</code> is a bit problematic due to a ReSharper bug (RSRP-469876) but if it's
                 just typed in without completion, Rider actually continues to provide navigation to the view!<br>
                 <img src="images/rider_navigation_to_action_with_nameof.png">
             </li>
             <li>When returning a View(model), Rider detects that the referenced view is missing and suggests to create
                 it:<br>
-                <img width="600" src="images/rider_create_razor_views.png">
+                <img src="images/rider_create_razor_views.png">
             </li>
         </ol>
     </li>
     <li>Updating services with a new <code>Get(int id)</code> method: fine. There actually is a (poorly discoverable)
         context action to implement the new interface method in derived classes:<br>
-        <img width="600" src="images/rider_implement_in_derived_classes.png"><br>
+        <img src="images/rider_implement_in_derived_classes.png"><br>
         Good to know it's here but I'd expect a quick-fix instead. All in all, fine editing in both services.
     </li>
     <li>
@@ -610,7 +609,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
             </li>
             <li>However, after creating <em>_ViewImports.cshtml</em> (see next step), Rider starts to provide completion
                 for both tag helper attributes (<code>asp-action</code> and such) and their values, nice!<br>
-                <img width="600" src="images/rider_completion_tag_helper_values.png">
+                <img src="images/rider_completion_tag_helper_values.png">
             </li>
         </ol>
     </li>
@@ -625,15 +624,15 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
             <li>When entering the regular anchor with relative paths, Rider complains it doesn't recognize the relative
                 path, suggests to set path mapping, then nothing happens but the inspection is gone. Trying to edit path
                 mappings fails silently:<br/>
-                <img width="600" src="images/rider_path_mapping.png">
+                <img src="images/rider_path_mapping.png">
             </li>
             <li>Action link syntax: again, action resolve in string parameter; however, completion can be
                 improved:<br>
-                <img width="600" src="images/rider_completion_actionlink.png">
+                <img src="images/rider_completion_actionlink.png">
             </li>
             <li>Tag helper syntax: good! Rider even suggests asp-route-id that is derived from the Details action
                 signature - something that Visual Studio doesn't do:<br>
-                <img width="600" src="images/rider_completion_asp_route_id.png">
+                <img src="images/rider_completion_asp_route_id.png">
             </li>
         </ol>
     </li>
@@ -684,7 +683,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <ol>
     <li>Link from <em>Index.cshtml</em> to a new action: great! Rider sees that there's no
         <code>Create()</code> action yet, and provides a quick-fix to create one:<br>
-        <img width="600" src="images/rider_create_action_from_usage.png">
+        <img src="images/rider_create_action_from_usage.png">
     </li>
     <li>New <code>Create()</code> action in Home Controller auto-created with the quick-fix. Now, adding a
         reference to a view that doesn't exist yet - Rider detects this, suggests to create one, and it's
@@ -712,7 +711,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
                 (RSRP-469518)
             </li>
             <li>Completion for <em>input</em> types is available:<br>
-                <img width="600" src="images/rider_view_input_type_completion.png">
+                <img src="images/rider_view_input_type_completion.png">
             </li>
         </ol>
     </li>
@@ -840,7 +839,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>Updating the <code>Restaurant</code> model and the <code>RestaurantEditModel</code> view model with data
         annotations. Hanging attribute completion strikes again in both classes! (RIDER-16880), apart from this all
         fine. Context actions to move attributes between sections are nice!<br>
-        <img width="600" src="images/rider_ca_arrange_attributes.png">
+        <img src="images/rider_ca_arrange_attributes.png">
     </li>
     <li>Modifying the POST-specific <code>Create()</code> action to check if the model being passed is valid. All good.
         <em>Extend Selection</em> to the entire method body, then wrapping with an if statement using <em>Surround
@@ -864,7 +863,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <h3>Observations: Visual Studio :green_heart:</h3>
 <ol>
     <li>The <em>SQL Server Object Explorer</em> view in Visual Studio shows available LocalDB instances:<br>
-        <img width="600" src="images/vs_sql_server_object_explorer.png">
+        <img src="images/vs_sql_server_object_explorer.png">
     </li>
     <li>Although this is quite clumsy, you can get a connection string by opening properties of an instance:<br>
         <img width="600" src="images/vs_localdb_connection_string.png">
@@ -902,7 +901,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>Editing <em>.csproj</em> to install <em>Microsoft.EntityFrameworkCore.Tools.DotNet</em> as a <code>DotNetCliToolReference</code>:
         OK. Tag name completion is better (has camelHumps support). Highlighting for empty body of an XML
         tag is annoying (funnily, it goes away on introducing a line break):<br>
-        <img width="600" src="images/rider_csproj_xml_tag_has_empty_body.png">
+        <img src="images/rider_csproj_xml_tag_has_empty_body.png">
     </li>
     <li>Executing <code>dotnet ef</code> commands: via system shell or via bundled <em>Terminal</em> window.
     </li>
@@ -952,7 +951,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         to start typing an undeclared field to create from usage later, and this is where Rider's stupid space
         completion ruins the act: pressing <em>Space</em> at this point will complete the irrelevant library type
         instead of allowing me to type in a yet-to-be-declared field:<br>
-        <img width="600" src="images/rider_completion_space_fail.png"><br>
+        <img src="images/rider_completion_space_fail.png"><br>
         There's also a problem with <em>Complete Statement</em>
         with lambdas that I ran into (RSRP-470502) but it's unlikely to be a big deal for anyone unless they're using
         <em>Complete Statement</em> all the time.<br>Otherwise C# editing is just fine.
@@ -1129,9 +1128,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <ol>
     <li>Editing <em>_ViewImports.cshtml</em>: good, completion works well.</li>
     <li>Going to the first view, and batch-executing two quick-fixes: <em>Remove unused directives</em> and
-        <em>Remove redundant qualifier</em>. Nice!<br><img
-                width="600"
-                src="images/rider_razor_unused_directives.png">
+        <em>Remove redundant qualifier</em>. Nice!<br><img src="images/rider_razor_unused_directives.png">
     </li>
 </ol>
 
@@ -1162,7 +1159,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         generates a code-behind file (<em>Greeting.cshtml.cs</em>, or was it there since adding the Razor
         page?<em>) </em>and also shows a nested and seemingly
         redundant<em>_Pages_Greeting</em>:<br>
-        <img width="600" src="images/vs_razor_pages_codebehind.png">
+        <img src="images/vs_razor_pages_codebehind.png">
     </li>
     <li>Editing code-behind: injecting service, getting message of the day within <code>OnGet()</code>.</li>
     <li>Editing <em>Greeting.cshtml</em> to render a property on the code-behind, and adding a required
@@ -1184,7 +1181,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>Copy/pasting <em>_ViewImports</em> and <em>_ViewStart</em> to the <em>Pages</em> folder, editing
         <em>_ViewImports</em> to use more namespaces: OdeToFoodRider.Pages (the Razor page code-behind) is
         unresolved:<br>
-        <img width="600" src="images/rider_pages_unresolved.png">
+        <img src="images/rider_pages_unresolved.png">
     </li>
     <li>Editing <em>Greeting.cshtml</em> by adding an <code>@inject</code> directive: good! Rider even suggests a name
         for the injected property.
@@ -1198,7 +1195,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         unresolved (because code-behind hadn't been generated); creating from usage creates a regular class in the Pages
         directory, instead of a nested <em>Greeting.cshtml.cs</em>. Have to rename, after which it's properly nested.
         Changing namespace in the code-behind to .Pages fixes resolve from <em>ViewImports</em>.<br>
-        <img width="600" src="images/rider_pages_codebehind_nesting.png">
+        <img src="images/rider_pages_codebehind_nesting.png">
     </li>
     <li>Editing code-behind: injecting service, creating <code>OnGet()</code> and displaying message of the day: all
         fine but <code>OnGet()</code> highlighted as never used.
@@ -1251,11 +1248,11 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>Copying over a form from the <em>Create</em> view to <em>Edit.cshtml</em> and adapting. Again,
         completion at <code>asp-for</code> could be better. Otherwise fine, especially nice to be able to
         use the <em>Change All</em> quick-fix to correct copy-pasted model references:<br>
-        <img width="600" src="images/rider_change_all.png">
+        <img src="images/rider_change_all.png">
     </li>
     <li>Adding the <code>Update()</code> method to <code>IRestaurantData</code> and derived types. CA
         Implement in derived types and its type selector: nice!<br>
-        <img width="600" src="images/rider_derived_disambiguation.png"><br>
+        <img src="images/rider_derived_disambiguation.png"><br>
         Shortcut completion for enum members is nice, too:<br>
         <img width="600" src="images/rider_enum_combo_completion.png"><br>
         Overall very solid editing experience.
@@ -1266,7 +1263,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         are highlighted as unused. Action and controller arguments of <code>RedirectToAction()</code> are
         highlighted as regular string literals, as opposed to their special treatment in MVC
         controllers:<br>
-        <img width="600" src="images/rider_page_controller_action_parameters.png"><br>
+        <img src="images/rider_page_controller_action_parameters.png"><br>
         The <em>if</em> live template continues to be deployed into a weird <code>if(b)</code>. Otherwise fine.
     </li>
 </ol>
@@ -1301,9 +1298,9 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
     <li>Creating a <em>_Summary.cshtml</em> partial view, and it looks like we can do that from
         usage!<br>
-        <img width="600" src="images/rider_create_partial_from_usage.png"><br>
+        <img src="images/rider_create_partial_from_usage.png"><br>
         HOWEVER, it looks like no, we can't - for no particular reason:<br>
-        <img width="600" src="images/rider_cant_create_view.png"><br>
+        <img src="images/rider_cant_create_view.png"><br>
         OK, creating from live template then.
     </li>
     <li>Editing <em>_Summary.cshtml</em>. No sync-editing of HTML tags, and on a mismatch between the opening and the
@@ -1343,13 +1340,13 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         the class. All good, <em>Create readonly field from constructor parameter</em> helps again.
     </li>
     <li>Trying to create the <em>Default</em> view for the view component with a quick-fix:<br>
-        <img width="600" src="images/rider_create_view_component_view.png"><br>
+        <img src="images/rider_create_view_component_view.png"><br>
         It doesn't work unfortunately, throwing DEXP-361709 along the way. OK, creating manually, which is less
         cumbersome to do than in Visual Studio anyway. Adding simple view content, all fine.
     </li>
     <li>Editing <em>_Layout.cshtml</em> to invoke the view component in two ways. Completion for view component class in
         string literals is a nice surprise:<br>
-        <img width="600" src="images/rider_component_invoke_completion.png"><br>
+        <img src="images/rider_component_invoke_completion.png"><br>
         Neither Rider nor Visual Studio provide completion for the tag helper syntax. Adding a directive to
         <em>_ViewImports.cshtml</em> - OK although there's no completion for namespaces (much like Visual Studio)ю
     </li>
@@ -1487,7 +1484,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>Adding a <em>bootstrap</em> dependency. Completion in package.json is on par with Visual Studio, it
         looks like it even works faster. Rider doesn't auto-install but instead, suggests to install
         dependencies, and does that if I allow it to:<br>
-        <img width="600" src="images/rider_install_dependencies.png"><br>
+        <img src="images/rider_install_dependencies.png"><br>
         The only downside is that there's no npm node in the project's Dependencies node in Solution Explorer,
         so you can only see there are installed dependencies if you choose to <em>Show all files</em>.
     </li>
@@ -1523,7 +1520,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <ol>
     <li>Adding an undeclared application builder extension method to <em>Startup.cs</em> that would enable serving
         static files. Shocking fact: Rider can't create an extension method from usage, either:<br>
-        <img width="600" src="images/rider_extension_method_no_create_from_usage.png">
+        <img src="images/rider_extension_method_no_create_from_usage.png">
     </li>
     <li>Adding a <em>Middleware</em> folder and a new class in it to implement the extension method. Smooth C# editing.
         Rider shows the extension method on call site without having to put it into an external namespace.
@@ -1575,7 +1572,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <ol>
     <li>Adding a few more dependencies into <em>package.json</em>. The <em>Update Dependencies</em> popup is late to
         show up this time but there's also a quick-fix to run npm install that is available earlier, nice!<br>
-        <img width="600" src="images/rider_qf_npm_install.png">
+        <img src="images/rider_qf_npm_install.png">
     </li>
     <li>Typing script references by hand. Tried to go up to project folder in path completion but weirdly enough, it
         doesn't see the <em>node_modules</em> directory at all:<br>
