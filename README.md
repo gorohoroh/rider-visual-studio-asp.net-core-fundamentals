@@ -6,6 +6,20 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h2>Creating a new ASP.NET Core Web Application with C# (Empty template)</h2>
 
+<h3>Observations: Visual Studio :green_heart:</h3>
+<ol>
+    <li><em>Solution Explorer</em>:
+        <ol>
+            <li>Expanded to file level (good)</li>
+            <li>Text editor area contains ASP.NET Code specific overview page with documentation links; <em>Connected
+                Services</em> and <em>Publish</em> panes are available for navigation<br><img
+                    src="images/solution_created_visual_studio.png" width="600">
+            </li>
+        </ol>
+    </li>
+    <li>Multimonitor support: all UI related to creating a project is opened on a single display</li>
+</ol>
+
 <h3>Observations: Rider :yellow_heart:</h3>
 <ol>
     <li>In <em>New Solution</em> wizard, can't select a directory with the updated <em>Open File</em> dialog; have to
@@ -27,29 +41,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<ol>
-    <li><em>Solution Explorer</em>:
-        <ol>
-            <li>Expanded to file level (good)</li>
-            <li>Text editor area contains ASP.NET Code specific overview page with documentation links; <em>Connected
-                Services</em> and <em>Publish</em> panes are available for navigation<br><img
-                    src="images/solution_created_visual_studio.png" width="600">
-            </li>
-        </ol>
-    </li>
-    <li>Multimonitor support: all UI related to creating a project is opened on a single display</li>
-</ol>
-
 <h2>Initial run of the application that we've just created</h2>
-
-<h3>Observations: Rider :green_heart:</h3>
-<p>Accepted <em>Default</em> run configuration settings, built, ran.</p>
-<p><em>Run</em> tool window says listening on port 5000, further requests going through the same port.</p>
-<p>Browser not automatically opened - however, clicking the link from the <em>Run</em> window works to open
-    in default browser.</p>
-<p>Stopping is clear: works with <em>Ctrl+C</em> in the <em>Run</em> tool window, as well as with a <em>Stop
-    Default</em> command.</p>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>All good. Built, ran using the default IIS Express launch profile. Output window showing output from
@@ -63,6 +55,14 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     using the separate IIS Express UI:<br><img width="600" src="images/iis_express_ui.png">
 </p>
 
+<h3>Observations: Rider :green_heart:</h3>
+<p>Accepted <em>Default</em> run configuration settings, built, ran.</p>
+<p><em>Run</em> tool window says listening on port 5000, further requests going through the same port.</p>
+<p>Browser not automatically opened - however, clicking the link from the <em>Run</em> window works to open
+    in default browser.</p>
+<p>Stopping is clear: works with <em>Ctrl+C</em> in the <em>Run</em> tool window, as well as with a <em>Stop
+    Default</em> command.</p>
+
 <h3>Notes, commits</h3>
 <p>I assume that the differences in start/stop experience are due to Visual Studio <a
         href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/aspnet-core-module?view=aspnetcore-2.1">using
@@ -72,22 +72,18 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h2>Opening and editing project file</h2>
 
-<h3>Observations: Rider :green_heart:</h3>
-<p>Project file can be opened in text editor via <em>F4</em> or via right-click &gt; <em>Edit &gt; Edit
-    ....csproj</em>.</p>
-<p>No <em>Quick Info</em> available on elements.</p>
-
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>Project file can be opened in text editor via right-click &gt; <em>Edit project file</em>.</p>
 <p><em>Quick Info</em> tooltip is available on hover for valid <em>.csproj</em> elements:<br/>
     <img width="600" src="images/vs_csproj_quick_info.png">
 </p>
 
-<h2>Creating a configuration file (appsettings.json)</h2>
+<h3>Observations: Rider :green_heart:</h3>
+<p>Project file can be opened in text editor via <em>F4</em> or via right-click &gt; <em>Edit &gt; Edit
+    ....csproj</em>.</p>
+<p>No <em>Quick Info</em> available on elements.</p>
 
-<h3>Observations: Rider :yellow_heart:</h3>
-<p>Right-click project node &gt; <em>Add &gt; JSON file</em>. Just a generic JSON file template based on
-    WebStorm. No predefined name, empty content.</p>
+<h2>Creating a configuration file (appsettings.json)</h2>
 
 <h3>Observations: Visual Studio  :green_heart:</h3>
 <p>Right-click project node &gt; <em>Add &gt; New Item </em>(or <em>Ctrl+Shift+A</em>)<em> &gt; ASP.NET Core
@@ -97,21 +93,21 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <img width="600" src="images/vs_appsettings_json.png">
 </p>
 
-<h2>Modifying Startup.cs to use a value from appsettings.json</h2>
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Right-click project node &gt; <em>Add &gt; JSON file</em>. Just a generic JSON file template based on
+    WebStorm. No predefined name, empty content.</p>
 
-<h3>Observations: Rider :green_heart:</h3>
-<p>Good editing experience in JSON and C#. Import popup more useful than explicitly calling <em>Ctrl+.</em>
-    in Visual Studio for importing a reference for <code>IConfiguration</code>.</p>
+<h2>Modifying Startup.cs to use a value from appsettings.json</h2>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>Good editing experience in JSON and C#. Complete Statement doesn't work in JSON though, and importing a
     reference for <code>IConfiguration</code> is less obvious/comfortable than in Rider.</p>
 
-<h2>Creating and injecting a custom Greeter service instead of hardcoded settings value</h2>
-
 <h3>Observations: Rider :green_heart:</h3>
-<p>All fine. Regular C# coding that involves Create from Usage and implementing interface members in a
-    derived class.</p>
+<p>Good editing experience in JSON and C#. Import popup more useful than explicitly calling <em>Ctrl+.</em>
+    in Visual Studio for importing a reference for <code>IConfiguration</code>.</p>
+
+<h2>Creating and injecting a custom Greeter service instead of hardcoded settings value</h2>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>All fine. Visual Studio handles Create from Usage and implementing interface members in a derived class,
@@ -132,10 +128,20 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
+<h3>Observations: Rider :green_heart:</h3>
+<p>All fine. Regular C# coding that involves Create from Usage and implementing interface members in a
+    derived class.</p>
+
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/972408e215db8f217a500e7c7ee4ecfe8353eecf">Commit link</a></p>
 
 <h2>Configuring middleware: using IApplicationBuilder</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Good enough. Regular C# editing with certain issues both in Rider and Visual Studio. For example, VS
+    completion breaks down after the <code>await</code> keyword - no longer suggests anything. Workaround:
+    type a sync statement first, then add the <code>await</code> keyword. Rider handles this just fine. See
+    commit for details and context.</p>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Good enough. Regular C# editing with certain issues both in Rider and Visual Studio. For example, Rider's
@@ -150,16 +156,16 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         width="600" src="images/rider_annoying_tooltip_with_delegates.png">
 </p>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Good enough. Regular C# editing with certain issues both in Rider and Visual Studio. For example, VS
-    completion breaks down after the <code>await</code> keyword - no longer suggests anything. Workaround:
-    type a sync statement first, then add the <code>await</code> keyword. Rider handles this just fine. See
-    commit for details and context.</p>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/ad558809904c44af3a7f2aa3242958896c805c30">Commit link</a></p>
 
 <h2>Configuring middleware: showing exception details and configuring environment-specific middleware</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Good enough in terms of C# editing.</p>
+<p>Launch settings are natively supported, as opposed to Rider.</p>
+<p><em>appsettings.Development.json</em> was automatically nested under <em>appsettings.json</em> and didn't
+    require any manual configuration.</p>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Good enough in terms of C# editing, although the "Use string interpolation" CA wasn't available when I
@@ -180,15 +186,9 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>However, Rider doesn't by default nest <em>appsettings.Development.json</em> under <em>appsettings.json</em>
         as Visual Studio does. Had to click <em>File Nesting Settings</em> in the toolbar and manually enter
         a nesting rule: <em>parent: .json, child: .Development.json</em>.<br><img width="600"
-                src="images/appsettings_nesting.png">
+                                                                                  src="images/appsettings_nesting.png">
     </li>
 </ol>
-
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Good enough in terms of C# editing.</p>
-<p>Launch settings are natively supported, as opposed to Rider.</p>
-<p><em>appsettings.Development.json</em> was automatically nested under <em>appsettings.json</em> and didn't
-    require any manual configuration.</p>
 
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/032855d2ac63c7bdca103045f5da2b01cda12405">Commit
@@ -199,13 +199,13 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h2>Configuring middleware: serving static files</h2>
 
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All good. Involves regular C# editing + creating an HTML file.</p>
+
 <h3>Observations: Rider :green_heart:</h3>
 <p>All good. Involves regular C# editing + creating an HTML file.</p>
 <p>Live template for HTML file in Rider is slightly better as it places a hotspot at the value of the <code>&lt;title&gt;</code>
     tag, and then Rider suggests adding the new file to Git.</p>
-
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>All good. Involves regular C# editing + creating an HTML file.</p>
 
 <h3>Notes, commits</h3>
 <p>
@@ -217,6 +217,12 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 </p>
 
 <h2>Configuring middleware for ASP.NET MVC and adding a simple Home controller</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Viewing NuGet dependencies in Solution Explorer works fine.</p>
+<p>Adding a directory in Visual Studio is harder: for some reason, Visual Studio's "New folder" is only available as a
+    separate contextual command, and not as an item in <em>Add New Item</em> (<code>Ctrl+Shift+A</code>).
+</p>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Viewing NuGet dependencies in Solution Explorer works fine. "Manage NuGet Packages" command is available
@@ -233,23 +239,17 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <img width="600" src="images/camelcase_completion_rider.png">
 </p>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Viewing NuGet dependencies in Solution Explorer works fine.</p>
-<p>Adding a directory in Visual Studio is harder: for some reason, Visual Studio's "New folder" is only available as a
-    separate contextual command, and not as an item in <em>Add New Item</em> (<code>Ctrl+Shift+A</code>).
-</p>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/f6379b24491e9a60284adf7f3c242626dcc0b24a">Commit
         link</a></p>
-        
+
 <h2>Setting up conventional routing</h2>
 
-<h3>Observations: Rider :green_heart:</h3>
+<h3>Observations: Visual Studio :green_heart:</h3>
 <p>All fine with C# editing and adding a new controller</p>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
+<h3>Observations: Rider :green_heart:</h3>
 <p>All fine with C# editing and adding a new controller</p>
 
 <h3>Notes, commits</h3>
@@ -257,13 +257,14 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h2>Setting up attribute routes</h2>
 
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>C# editing around attributes works as expected.</p>
+
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Editing C# attributes works fine; however, import completion for the Route attribute is severely hanging:<br/>
     <img  width="600"
-         src="images/rider_attribute_import_completion.png">
+          src="images/rider_attribute_import_completion.png">
 </p>
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>C# editing around attributes works as expected.</p>
 
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/2373c1b43b144f22205b6a02f32ca42ce8b0db34">Commit link</a></p>
@@ -273,18 +274,41 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     returning the model instance from the controller
 </h2>
 
-<h3>Observations: Rider :green_heart:</h3>
-<p>All good in terms of editing C# in the controller and creating a new directory for models and a new model
-    in it (tried using <em>Move</em> CA and refactoring)</p>
-
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>All good in terms of editing C# and creating a new directory and a new model (except that creating a new
     directory is a separate action - see one of the above Visual Studio notes)</p>
+
+<h3>Observations: Rider :green_heart:</h3>
+<p>All good in terms of editing C# in the controller and creating a new directory for models and a new model
+    in it (tried using <em>Move</em> CA and refactoring)</p>
 
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/f657b1f97da8ffbee2cd2dea2f3244b6c09c1117">Commit link</a></p>
 
 <h2>Creating and rendering a view</h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio is lagging behind severely in this scenario:</p>
+<ol>
+    <li>You can't create a view from usage, at all.</li>
+    <li>This means if you're creating the default initial folder structure for models, you have to create a
+        directory twice (separate action), and then use <em>Add New Item</em> to create a view.
+    </li>
+    <li>In the view, Scott right away removes the default content and uses the html template to roll out a
+        barebones HTML structure (this template isn't available in Rider but it's not needed there because
+        Rider's default template for a Razor view is way better and already contains an HTML skeleton.
+    </li>
+</ol>
+<p>When manually typing a model (<code>@model Restaurant</code>), Visual Studio doesn't suggest importing the model
+    namespace - you need to manually type in an FQN.
+</p>
+<p>Visual Studio doesn't provide <em>Expand/Contract Selection</em> commands in Razor views.
+</p>
+<p>Visual Studio's completion only suggests the uppercase <code>@Model</code> property outside of the imports; however,
+    it doesn't suggest anything when you type the lowercase <code>@model</code>, which means Rider's problem with
+    suggested casing isn't as serious as it looks, because there's no typing habit for Rider completion to break when
+    dealing with Visual Studio typing patterns.
+</p>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Rider is superior in this scenario: creating a view from usage (<code>return View(model);</code>) in the
@@ -310,37 +334,21 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     suggests <code>@model</code> when model is typed, even though the lower-case <code>@model</code> is only
     applicable as the import statement, and <code>@Model</code> should be provided instead.</p>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio is lagging behind severely in this scenario:</p>
-<ol>
-    <li>You can't create a view from usage, at all.</li>
-    <li>This means if you're creating the default initial folder structure for models, you have to create a
-        directory twice (separate action), and then use <em>Add New Item</em> to create a view.
-    </li>
-    <li>In the view, Scott right away removes the default content and uses the html template to roll out a
-        barebones HTML structure (this template isn't available in Rider but it's not needed there because
-        Rider's default template for a Razor view is way better and already contains an HTML skeleton.
-    </li>
-</ol>
-<p>When manually typing a model (<code>@model Restaurant</code>), Visual Studio doesn't suggest importing the model
-    namespace - you need to manually type in an FQN.
-</p>
-<p>Visual Studio doesn't provide <em>Expand/Contract Selection</em> commands in Razor views.
-</p>
-<p>Visual Studio's completion only suggests the uppercase <code>@Model</code> property outside of the imports; however,
-    it doesn't suggest anything when you type the lowercase <code>@model</code>, which means Rider's problem with
-    suggested casing isn't as serious as it looks, because there's no typing habit for Rider completion to break when
-    dealing with Visual Studio typing patterns.
-</p>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/21a5fc3cdd024c69531d5805cd358d4e3b979801">Commit
         link</a></p>
-        
+
 <h2>Populating with data: creating a <em>Services</em> directory and moving
     <code>IGreeter</code> service there
 </h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Moving <em>IGreeter.cs</em> to the new <em>Services</em> directory by drag-n-drop in Solution Explorer.
+    Requires updating the namespace in <code>IGreeter</code>, then compiling and going through several <em>CS0246</em>
+    build errors to add a missing using directive in <em>Startup.cs</em>.</p>
+<p>Subpar manual experience as Visual Studio doesn't have a <em>Move to Folder</em> refactoring (in fact, no
+    <em>Move</em> refactorings at all, and no refactorings available on Solution Explorer nodes.)</p>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Creating a new directory, again, is a bit easier. Rider modifies .csproj with a new folder include but
@@ -356,13 +364,6 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <img width="600" src="images/rider_move_to_folder.png">
 </p>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Moving <em>IGreeter.cs</em> to the new <em>Services</em> directory by drag-n-drop in Solution Explorer.
-    Requires updating the namespace in <code>IGreeter</code>, then compiling and going through several <em>CS0246</em>
-    build errors to add a missing using directive in <em>Startup.cs</em>.</p>
-<p>Subpar manual experience as Visual Studio doesn't have a <em>Move to Folder</em> refactoring (in fact, no
-    <em>Move</em> refactorings at all, and no refactorings available on Solution Explorer nodes.)</p>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/d80c2e6cd303271aa9cda9b6c75439f156e82014">Commit
@@ -373,6 +374,50 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     controller to receive restaurant data from an <code>IRestaurantData</code> service, updating the view to
     accept an enumerable model and iterate through the collection of restaurants
 </h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does it all fine actually; yellow here just means that Rider is significantly better during
+    this coding segment.</p>
+<ol>
+    <li>Creating <code>IRestaurantData</code> via <em>Ctrl+Shift+A</em>: fine.</li>
+    <li>Creating the derived <code>InMemoryRestaurantData</code> class: also has to be done with <em>Ctrl+Shift+A</em>
+        because there's no action to create a derived type.
+    </li>
+    <li>Writing code in <code>InMemoryRestaurantData</code>: all fine, with a few notes:
+        <ol>
+            <li>When modifying the class declaration to implement <code>IRestaurant</code>, Visual Studio
+                provides <em>Implement interface</em> and <em>Implement interface explicitly</em> quick
+                actions. Nice.
+            </li>
+            <li>Scott creates a <code>InMemoryRestaurantData()</code> constructor with the <code>ctor</code>
+                code snippet - nice, but that's the only option with VS as there's no context action on a
+                field to initialize the field from constructor.
+            </li>
+        </ol>
+    </li>
+    <li>Modifying the Home controller: good. Notes:
+        <ol>
+            <li>Visual Studio doesn't have import items in completion, which means that when referencing an
+                unimported type, you have to make sure to spell and capitalize it correctly, and then use a
+                quick action to add an import. In Rider, import items are available in completion, which
+                allows using camelHumps and abbreviations without being precise with naming, and
+                additionally, accepting an import symbol suggestion adds the necessary using statement
+                without the need to explicitly invoke a quick action.
+            </li>
+            <li>Visual Studio provides a set of quick actions to generate <code>_restaurantData</code> (as a
+                full or read-only field, full or read-only property, local variable); as well as explicit
+                actions to change <code>_restaurantData</code> to <code>IRestaurantData</code> or
+                <code>restaurantData</code>:<br><img width="600" src="images/vs_generate_from_usage.png">
+            </li>
+        </ol>
+    </li>
+    <li>Modifying the Home view: good. Notes:
+        <ol>
+            <li>There's a <em>table</em> code snippet to generate an HTML table in Razor markup, nice.</li>
+            <li>However, there's no <em>foreach</em> code snippet, just keyword completion.</li>
+        </ol>
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <ol>
@@ -429,56 +474,27 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio does it all fine actually; yellow here just means that Rider is significantly better during
-    this coding segment.</p>
-<ol>
-    <li>Creating <code>IRestaurantData</code> via <em>Ctrl+Shift+A</em>: fine.</li>
-    <li>Creating the derived <code>InMemoryRestaurantData</code> class: also has to be done with <em>Ctrl+Shift+A</em>
-        because there's no action to create a derived type.
-    </li>
-    <li>Writing code in <code>InMemoryRestaurantData</code>: all fine, with a few notes:
-        <ol>
-            <li>When modifying the class declaration to implement <code>IRestaurant</code>, Visual Studio
-                provides <em>Implement interface</em> and <em>Implement interface explicitly</em> quick
-                actions. Nice.
-            </li>
-            <li>Scott creates a <code>InMemoryRestaurantData()</code> constructor with the <code>ctor</code>
-                code snippet - nice, but that's the only option with VS as there's no context action on a
-                field to initialize the field from constructor.
-            </li>
-        </ol>
-    </li>
-    <li>Modifying the Home controller: good. Notes:
-        <ol>
-            <li>Visual Studio doesn't have import items in completion, which means that when referencing an
-                unimported type, you have to make sure to spell and capitalize it correctly, and then use a
-                quick action to add an import. In Rider, import items are available in completion, which
-                allows using camelHumps and abbreviations without being precise with naming, and
-                additionally, accepting an import symbol suggestion adds the necessary using statement
-                without the need to explicitly invoke a quick action.
-            </li>
-            <li>Visual Studio provides a set of quick actions to generate <code>_restaurantData</code> (as a
-                full or read-only field, full or read-only property, local variable); as well as explicit
-                actions to change <code>_restaurantData</code> to <code>IRestaurantData</code> or
-                <code>restaurantData</code>:<br><img width="600" src="images/vs_generate_from_usage.png">
-            </li>
-        </ol>
-    </li>
-    <li>Modifying the Home view: good. Notes:
-        <ol>
-            <li>There's a <em>table</em> code snippet to generate an HTML table in Razor markup, nice.</li>
-            <li>However, there's no <em>foreach</em> code snippet, just keyword completion.</li>
-        </ol>
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/47fe289c741a5e54340cdec78fdbc9918f7bdcdc">Commit
         link</a></p>
 
 <h2>Creating and using a view model for the Index view</h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Again, Visual Studio does a good job, it's just Rider that does it better.</p>
+<ol>
+    <li>Creating a directory and a file for the first view model: all fine.</li>
+    <li>Modifying the controller: fine. <em>Initialize field from constructor</em> would be handy but it's not there. As
+        a side note, Visual Studio now provides a quick action to use object initializer - the action is available from
+        the constructor call only though, not from variable usages:<br/>
+        <img width="600" src="images/vs_object_initialization.png">
+    </li>
+    <li>Modifying the view: decent. Had to change model type by hand, after which it took Visual Studio ~30 seconds to
+        re-resolve the <code>Model</code> in <code>foreach</code>, figure out it's now a <code>HomeIndexViewModel</code>
+        and finally start suggesting view model properties in code completion.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <ol>
@@ -496,21 +512,6 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Again, Visual Studio does a good job, it's just Rider that does it better.</p>
-<ol>
-    <li>Creating a directory and a file for the first view model: all fine.</li>
-    <li>Modifying the controller: fine. <em>Initialize field from constructor</em> would be handy but it's not there. As
-        a side note, Visual Studio now provides a quick action to use object initializer - the action is available from
-        the constructor call only though, not from variable usages:<br/>
-        <img width="600" src="images/vs_object_initialization.png">
-    </li>
-    <li>Modifying the view: decent. Had to change model type by hand, after which it took Visual Studio ~30 seconds to
-        re-resolve the <code>Model</code> in <code>foreach</code>, figure out it's now a <code>HomeIndexViewModel</code>
-        and finally start suggesting view model properties in code completion.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/fde46ac4973fc1a76ba70bcc3b2f6b1b0c3922c4">Commit
@@ -521,6 +522,39 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <em>Details</em> view, updating the <em>Index</em> view to use tag helpers and creating a required <em>_ViewImports.cshtml</em>
     along the way.
 </h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does the job but overall in a lot less intelligent way than Rider.</p>
+<ol>
+    <li>Creating a <code>Details(int id)</code> action in the Home controller: decent.
+        <ol>
+            <li>Some code completion issues in Visual Studio when using a new method <code>Get(id)</code>
+                before declaring it; creating the method in the interface from usage works (doesn't insert
+                an implementation stub in the derived <code>InMemoryRestaurantData</code> though).
+            </li>
+            <li>Returning <code>RedirectToAction("Index")</code> works but Visual Studio doesn't provide
+                code completion for actions in the string literal, and Scott prefers to use <code>nameof(Index)</code>
+                instead; when returning a <code>View(model)</code>.
+            </li>
+            <li>Visual Studio doesn't see that the view doesn't exist and doesn't suggest to create one.
+            </li>
+        </ol>
+    </li>
+    <li>Updating services with a new <code>Get(int id)</code> method: fine. When going to the derived <code>InMemoryRestaurantData</code>,
+        Visual Studio does provide a quick action to implement the new interface method.
+    </li>
+    <li>Creating the <em>Details</em> view: OK. No completion for controller and action names in tag helpers
+        though.
+    </li>
+    <li>Creating <em>_ViewImports.cshtml</em>: OK, using a specialized item via <em>Ctrl+Shift+A</em>.
+        However, Visual Studio provides no completion for the assembly name refrenced from <em>_ViewImports.cshtml</em>.
+    </li>
+    <li>Modifying the <em>Index</em> view to render links to restaurant details using 3 different kinds of
+        syntax: <code>&lt;a href&gt;</code>, <code>@Html.ActionLink</code> and a tag helper. Visual Studio
+        provides completion for tag helper attributes but, again, there's no code completion for controller
+        and view names in string literals - only for C# symbols after <code>@</code>.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Mixed result: Rider shines with a few great features in this segment but there's a bunch of bugs as
@@ -605,45 +639,44 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio does the job but overall in a lot less intelligent way than Rider.</p>
-<ol>
-    <li>Creating a <code>Details(int id)</code> action in the Home controller: decent.
-        <ol>
-            <li>Some code completion issues in Visual Studio when using a new method <code>Get(id)</code>
-                before declaring it; creating the method in the interface from usage works (doesn't insert
-                an implementation stub in the derived <code>InMemoryRestaurantData</code> though).
-            </li>
-            <li>Returning <code>RedirectToAction("Index")</code> works but Visual Studio doesn't provide
-                code completion for actions in the string literal, and Scott prefers to use <code>nameof(Index)</code>
-                instead; when returning a <code>View(model)</code>.
-            </li>
-            <li>Visual Studio doesn't see that the view doesn't exist and doesn't suggest to create one.
-            </li>
-        </ol>
-    </li>
-    <li>Updating services with a new <code>Get(int id)</code> method: fine. When going to the derived <code>InMemoryRestaurantData</code>,
-        Visual Studio does provide a quick action to implement the new interface method.
-    </li>
-    <li>Creating the <em>Details</em> view: OK. No completion for controller and action names in tag helpers
-        though.
-    </li>
-    <li>Creating <em>_ViewImports.cshtml</em>: OK, using a specialized item via <em>Ctrl+Shift+A</em>.
-        However, Visual Studio provides no completion for the assembly name refrenced from <em>_ViewImports.cshtml</em>.
-    </li>
-    <li>Modifying the <em>Index</em> view to render links to restaurant details using 3 different kinds of
-        syntax: <code>&lt;a href&gt;</code>, <code>@Html.ActionLink</code> and a tag helper. Visual Studio
-        provides completion for tag helper attributes but, again, there's no code completion for controller
-        and view names in string literals - only for C# symbols after <code>@</code>.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/ddc5a0ebabab97464050d15219bfe3c4ea143615">Commit
         link</a></p>
-        
+
 <h2>Adding a form to create restaurants</h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does the job but Rider provides a lot more automation in this scenario.</p>
+<ol>
+    <li>Link from <em>Index.cshtml</em> to a new <code>Create()</code> action: Visual Studio doesn't detect
+        that there's no action yet. Have to create by hand in the next step.
+    </li>
+    <li>Creating a new <code>Create()</code> action in the Home controller. When returning
+        <code>View()</code>, Visual Studio doesn't see there's no view yet.
+    </li>
+    <li>Creating a new <code>CuisineType</code> enum in Models: adding a new class, then changing it to
+        <code>enum</code> and populating. OK.
+    </li>
+    <li>Adding a <code>CuisineType</code> property to the <code>Restaurant</code> model with the
+        <em>prop</em> snippet: OK.
+    </li>
+    <li>Creating a <em>Create.cshtml</em> view manually. Notes:
+        <ol>
+            <li>There are no import suggestions for non-FQN types when declaring a model, have to type in
+                the FQN by hand, although code completion does help with FQN
+            </li>
+            <li>Snippets are available for <em>form</em>, <em>select</em>, and <em>input</em>, nice!</li>
+            <li>Completion of model properties in tag helpers such as <em>asp-for</em>, <em>asp-items</em> -
+                nice!<br>
+                <img width="600" src="images/vs_cshtml_input_asp-for_completion.png">
+            </li>
+            <li>When referencing the <code>CuisineType</code> enum, Visual Studio doesn't provide an import
+                suggestion, have to go up and type a <code>@using</code> by hand.
+            </li>
+        </ol>
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Even though there are code analysis and code completion bugs when editing a view, the overall experience
@@ -685,38 +718,6 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio does the job but Rider provides a lot more automation in this scenario.</p>
-<ol>
-    <li>Link from <em>Index.cshtml</em> to a new <code>Create()</code> action: Visual Studio doesn't detect
-        that there's no action yet. Have to create by hand in the next step.
-    </li>
-    <li>Creating a new <code>Create()</code> action in the Home controller. When returning
-        <code>View()</code>, Visual Studio doesn't see there's no view yet.
-    </li>
-    <li>Creating a new <code>CuisineType</code> enum in Models: adding a new class, then changing it to
-        <code>enum</code> and populating. OK.
-    </li>
-    <li>Adding a <code>CuisineType</code> property to the <code>Restaurant</code> model with the
-        <em>prop</em> snippet: OK.
-    </li>
-    <li>Creating a <em>Create.cshtml</em> view manually. Notes:
-        <ol>
-            <li>There are no import suggestions for non-FQN types when declaring a model, have to type in
-                the FQN by hand, although code completion does help with FQN
-            </li>
-            <li>Snippets are available for <em>form</em>, <em>select</em>, and <em>input</em>, nice!</li>
-            <li>Completion of model properties in tag helpers such as <em>asp-for</em>, <em>asp-items</em> -
-                nice!<br>
-                <img width="600" src="images/vs_cshtml_input_asp-for_completion.png">
-            </li>
-            <li>When referencing the <code>CuisineType</code> enum, Visual Studio doesn't provide an import
-                suggestion, have to go up and type a <code>@using</code> by hand.
-            </li>
-        </ol>
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>Commit links:</p>
 <ul>
@@ -727,6 +728,36 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <h2>Accepting form input: adding a restaurant edit model, modifying services,
     the Details view, and creating a new Home controller action
 </h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job with less automation but Rider's bugs set back its functional advantages.
+    Tie in this scenario.</p>
+<ol>
+    <li>Creating a <code>Create()</code> action overload in the <em>Home</em> controller to convert input
+        data into a new restaurant item.
+    </li>
+    <li>Creating a <code>RestaurantEditModel</code> input model in <em>ViewModels</em> via <em>Add New
+        Item</em> - although this in fact could be created from usage in the <em>Home</em> controller, in
+        which case the file would have been created in the <em>Controllers</em> folder and then should have
+        been moved to <em>ViewModels</em> (and we know Visual Studio can't modify namespaces on
+        drag-and-drop).
+    </li>
+    <li>Modifying the new <code>Create()</code> action in the <em>Home</em> controller to receive
+        a <code>RestaurantEditModel</code>, all good.
+    </li>
+    <li>Adding route constraints (attributes) to the two <code>Create()</code> actions.</li>
+    <li>Processing input model in the input <code>Create()</code> action. Using an <code>Add()</code> method
+        from <code>IRestaurantData</code> that is not declared yet, and generating it from usage.
+    </li>
+    <li>Implementing the <code>Add()</code> method in <code>InMemoryRestaurantData</code>: <em>Go to
+        Implementation</em> from <code>IRestaurantData</code> interface declaration (because there's no <em>Go
+        to Implementation</em> on specific members), and using the <em>Implement interface</em> quick action
+        to create a stub. Writing implementation code.
+    </li>
+    <li>Modifying the <em>Details.cshtml</em> view to show more data on the restaurant entry that we've just
+        created.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Rider's workflow is better automated but there are annoyances along the way. They were reported earlier,
@@ -750,50 +781,20 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Visual Studio does the job with less automation but Rider's bugs set back its functional advantages.
-    Tie in this scenario.</p>
-<ol>
-    <li>Creating a <code>Create()</code> action overload in the <em>Home</em> controller to convert input
-        data into a new restaurant item.
-    </li>
-    <li>Creating a <code>RestaurantEditModel</code> input model in <em>ViewModels</em> via <em>Add New
-        Item</em> - although this in fact could be created from usage in the <em>Home</em> controller, in
-        which case the file would have been created in the <em>Controllers</em> folder and then should have
-        been moved to <em>ViewModels</em> (and we know Visual Studio can't modify namespaces on
-        drag-and-drop).
-    </li>
-    <li>Modifying the new <code>Create()</code> action in the <em>Home</em> controller to receive 
-        a <code>RestaurantEditModel</code>, all good.
-    </li>
-    <li>Adding route constraints (attributes) to the two <code>Create()</code> actions.</li>
-    <li>Processing input model in the input <code>Create()</code> action. Using an <code>Add()</code> method
-        from <code>IRestaurantData</code> that is not declared yet, and generating it from usage.
-    </li>
-    <li>Implementing the <code>Add()</code> method in <code>InMemoryRestaurantData</code>: <em>Go to
-        Implementation</em> from <code>IRestaurantData</code> interface declaration (because there's no <em>Go
-        to Implementation</em> on specific members), and using the <em>Implement interface</em> quick action
-        to create a stub. Writing implementation code.
-    </li>
-    <li>Modifying the <em>Details.cshtml</em> view to show more data on the restaurant entry that we've just
-        created.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/e005da1a5e37f28a268f9af8f29d210425e0659e">Commit link</a></p>
 
 <h2>Adding a redirect to action to prevent duplicate POST requests</h2>
 
-<h3>Observations: Rider :yellow_heart:</h3>
-<p>Just a one-line change to the return of the POST-specific <code>Create()</code> action: OK. Used string
-    literal for view name instead of the <code>nameof</code> approach in Visual Studio because of the
-    <code>nameof</code> completion bug referenced somewhere above.</p>
-
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>Just a one-line change to the return of the POST-specific <code>Create()</code> action: OK. Used <code>nameof</code>
     for better completion because Visual Studio doesn't suggest view names in string literals.
 </p>
+
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Just a one-line change to the return of the POST-specific <code>Create()</code> action: OK. Used string
+    literal for view name instead of the <code>nameof</code> approach in Visual Studio because of the
+    <code>nameof</code> completion bug referenced somewhere above.</p>
 
 <h3>Notes, commits</h3>
 <p>
@@ -803,6 +804,29 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <h2>Adding model validation with data annotations in models, checking for valid
     model state in controller, and adding validation tag helpers in view
 </h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio is less feature-rich but more stable. Tie again.</p>
+<ol>
+    <li>Updating <em>Create.cshtml </em>to add labels to form items.<em> </em>Wrapping tags with a
+        <em>div</em>: <em>Shift+Alt+W</em> in Visual Studio. However the action is not reformatting the
+        resulting markup, and as <em>Extend Selection</em> doesn't work in Razor, I have to select manually,
+        then invoke <em>Ctrl+K,F</em> to reformat selection.
+    </li>
+    <li>Updating the <code>Restaurant</code> model and the <code>RestaurantEditModel</code> view model with
+        data annotations, using a quick action to import <code>System.ComponentModel.DataAnnotations</code>.
+    </li>
+    <li>Modifying the POST-specific <code>Create()</code> action to check if the model being passed is
+        valid. Scott wraps a code selection with an <code>if/else</code> manually, although there are code
+        snippets in Visual Studio.
+    </li>
+    <li>Updating <em>Create.cshtml</em> with placeholders for possible error messages using validation tag
+        helpers.
+    </li>
+    <li>Adding the <code>ValidateAntiForgeryToken</code> attribute to the POST-specific
+        <code>Create()</code> action.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Rider is better in terms of features, but the attribute completion tag is starting to annoy the hell out
@@ -830,41 +854,12 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Visual Studio is less feature-rich but more stable. Tie again.</p>
-<ol>
-    <li>Updating <em>Create.cshtml </em>to add labels to form items.<em> </em>Wrapping tags with a
-        <em>div</em>: <em>Shift+Alt+W</em> in Visual Studio. However the action is not reformatting the
-        resulting markup, and as <em>Extend Selection</em> doesn't work in Razor, I have to select manually,
-        then invoke <em>Ctrl+K,F</em> to reformat selection.
-    </li>
-    <li>Updating the <code>Restaurant</code> model and the <code>RestaurantEditModel</code> view model with
-        data annotations, using a quick action to import <code>System.ComponentModel.DataAnnotations</code>.
-    </li>
-    <li>Modifying the POST-specific <code>Create()</code> action to check if the model being passed is
-        valid. Scott wraps a code selection with an <code>if/else</code> manually, although there are code
-        snippets in Visual Studio.
-    </li>
-    <li>Updating <em>Create.cshtml</em> with placeholders for possible error messages using validation tag
-        helpers.
-    </li>
-    <li>Adding the <code>ValidateAntiForgeryToken</code> attribute to the POST-specific
-        <code>Create()</code> action.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/41e4d77d784aaed89116db1458c3c26887d49fdd">Commit
         link</a></p>
 
 <h2>Setting up a SQL Server LocalDB connection</h2>
-
-<h3>Observations: Rider :heart:</h3>
-<ol>
-    <li>Go to <em>Database &gt; Add Data source &gt; SQL Server</em>.</li>
-    <li>Try to set up a connection to SQL Server Local DB, give up, drop using Rider (DBE-6705).</li>
-</ol>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
 <ol>
@@ -876,7 +871,27 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
+<h3>Observations: Rider :heart:</h3>
+<ol>
+    <li>Go to <em>Database &gt; Add Data source &gt; SQL Server</em>.</li>
+    <li>Try to set up a connection to SQL Server Local DB, give up, drop using Rider (DBE-6705).</li>
+</ol>
+
 <h2>Installing and configuring EF Core</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>(EF Core already installed as part of Microsoft.AspNetCore.All.)</p>
+<ol>
+    <li>Searching for installed packages in <em>Solution Explorer &gt; project &gt; Dependencies</em>: OK
+    </li>
+    <li>Installing new packages via <em>Dependencies &gt; Manage NuGet Packages</em>: OK.</li>
+    <li>Editing <em>.csproj</em> to install <em>Microsoft.EntityFrameworkCore.Tools.DotNet</em> as a <code>DotNetCliToolReference</code>:
+        OK, although tag name completion is very basic (no camelHumps support).
+    </li>
+    <li>Executing <code>dotnet ef</code> commands: via system shell or via bundled <em>Package Manager
+        Console</em>.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>(EF Core already installed as part of Microsoft.AspNetCore.All.)</p>
@@ -893,26 +908,30 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>(EF Core already installed as part of Microsoft.AspNetCore.All.)</p>
-<ol>
-    <li>Searching for installed packages in <em>Solution Explorer &gt; project &gt; Dependencies</em>: OK
-    </li>
-    <li>Installing new packages via <em>Dependencies &gt; Manage NuGet Packages</em>: OK.</li>
-    <li>Editing <em>.csproj</em> to install <em>Microsoft.EntityFrameworkCore.Tools.DotNet</em> as a <code>DotNetCliToolReference</code>:
-        OK, although tag name completion is very basic (no camelHumps support).
-    </li>
-    <li>Executing <code>dotnet ef</code> commands: via system shell or via bundled <em>Package Manager
-        Console</em>.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/6601b7d940bc70d60f3f0bbf99922d2966274779">Commit link</a></p>
 
 <h2>Creating an EF Core <code>DbContext</code> and a service implementation
     that works with the context
 </h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job despite different commands to create items, no import completion.</p>
+<ol>
+    <li>Creating a new <em>Data</em> directory and an <code>OdeToFoodDbContext</code> class in it. Again,
+        two different commands to create a directory and a class. Again, since there are no import items in
+        completion, you have to be careful to type in <code>DbContext</code> exactly and properly cased
+        before Visual Studio suggests to add an import statement with a quick action.
+    </li>
+    <li>Creating a new <code>SqlRestaurantData</code> service to use instead of
+        <code>InMemoryRestaurantData</code>. New class is created via <em>Ctrl+Shift+A</em> as there's no
+        action to create a new derived class form an existing interface.
+    </li>
+    <li>Implementing <code>SqlRestaurantData</code>. The <em>Implement Members</em> action generates stubs,
+        then it's regular code editing inside the stubs + creating a constructor with <em>ctor</em>, and a
+        field to store the context with another quick action. All good.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Rider provides more automation and more convenience with its import items in completion; however, the
@@ -940,38 +959,10 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Visual Studio does the job despite different commands to create items, no import completion.</p>
-<ol>
-    <li>Creating a new <em>Data</em> directory and an <code>OdeToFoodDbContext</code> class in it. Again,
-        two different commands to create a directory and a class. Again, since there are no import items in
-        completion, you have to be careful to type in <code>DbContext</code> exactly and properly cased
-        before Visual Studio suggests to add an import statement with a quick action.
-    </li>
-    <li>Creating a new <code>SqlRestaurantData</code> service to use instead of
-        <code>InMemoryRestaurantData</code>. New class is created via <em>Ctrl+Shift+A</em> as there's no
-        action to create a new derived class form an existing interface.
-    </li>
-    <li>Implementing <code>SqlRestaurantData</code>. The <em>Implement Members</em> action generates stubs,
-        then it's regular code editing inside the stubs + creating a constructor with <em>ctor</em>, and a
-        field to store the context with another quick action. All good.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/39e74507229be3014d7d388a78663c222e204061">Commit link</a></p>
 
 <h2>Configuring EF Core services</h2>
-
-<h3>Observations: Rider :green_heart:</h3>
-<ol>
-    <li>Modifying <em>appsettings.json</em> to have a valid connection string (Rider-specific DB): OKю</li>
-    <li>Modifying <em>Startup.cs</em> to update available services and get access to connection string: very much OK.
-        Import completion items help; creating a constructor with <em>Alt+Ins</em>, adding a parameter + a quick-fix to
-        create a field works, unless I want to start with using an undeclared field (then I'd be hit by a Space
-        completion problem - see above.)
-    </li>
-</ol>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
 <ol>
@@ -983,6 +974,16 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
+<h3>Observations: Rider :green_heart:</h3>
+<ol>
+    <li>Modifying <em>appsettings.json</em> to have a valid connection string (Rider-specific DB): OKю</li>
+    <li>Modifying <em>Startup.cs</em> to update available services and get access to connection string: very much OK.
+        Import completion items help; creating a constructor with <em>Alt+Ins</em>, adding a parameter + a quick-fix to
+        create a field works, unless I want to start with using an undeclared field (then I'd be hit by a Space
+        completion problem - see above.)
+    </li>
+</ol>
+
 <h3>Notes, commits</h3>
 <p>Commit links:</p>
 <ul>
@@ -991,6 +992,15 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 </ul>
 
 <h2>Executing EF Core migrations</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<ol>
+    <li>Executing <code>dotnet ef migrations add InitialCreate</code> via Windows Command Prompt: OK.</li>
+    <li>Executing <code>dotnet ef database update</code> via Windows Command Prompt: OK.</li>
+    <li>Checking that the database has been created via <em>SQL Server Object Explorer</em> in Visual
+        Studio: OK.
+    </li>
+</ol>
 
 <h3>Observations: Rider :heart:</h3>
 <ol>
@@ -1004,19 +1014,22 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<ol>
-    <li>Executing <code>dotnet ef migrations add InitialCreate</code> via Windows Command Prompt: OK.</li>
-    <li>Executing <code>dotnet ef database update</code> via Windows Command Prompt: OK.</li>
-    <li>Checking that the database has been created via <em>SQL Server Object Explorer</em> in Visual
-        Studio: OK.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/287e6525b2560056b1df747185f263831dda0e08">Commit link</a></p>
 
 <h2>Adding entries to the <em>Restaurants</em> table from the application and from IDE DB UI</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<ol>
+    <li><em>SQL Server Object Explorer</em> &gt; DB &gt; table &gt; right-click &gt; <em>View Data</em> -
+        edit data in the editor, launch the application, see the data. Changes are committed to the DB
+        on-the-fly. Intuitive Excel-like editor UI:<img
+                width="600"
+                src="images/vs_db_editor.png">
+    </li>
+    <li>Adding a new restaurant from application UI &gt; refreshing DB editor in Visual Studio &gt; new data is shown.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <ol>
@@ -1032,19 +1045,21 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<ol>
-    <li><em>SQL Server Object Explorer</em> &gt; DB &gt; table &gt; right-click &gt; <em>View Data</em> -
-        edit data in the editor, launch the application, see the data. Changes are committed to the DB
-        on-the-fly. Intuitive Excel-like editor UI:<img
-                width="600"
-                src="images/vs_db_editor.png">
-    </li>
-    <li>Adding a new restaurant from application UI &gt; refreshing DB editor in Visual Studio &gt; new data is shown.
-    </li>
-</ol>
-
 <h2>Creating a layout view and using it from the index view</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job without notable issues.</p>
+<ol>
+    <li>Creating a <em>Shared</em> folder and a layout view (<em>Add New Item</em> -&gt; Razor layout, named
+        <em>_Layout.cshtml</em> by default) inside. Two different commands but OK, at least the layout item
+        template is there.
+    </li>
+    <li>Removing redundant markup from <em>Index.cshtml. Then </em>adding a title via <code>ViewBag</code>,
+        as well as a path to layout (no path completion).
+    </li>
+    <li>Adding a <code>@RenderSection</code> block to <em>_Layout.cshtml</em>: OK.</li>
+    <li>Adding a footer section to the <em>Index</em> view: OK.</li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Rider does the job but there are issues in file templates and completion.</p>
@@ -1067,24 +1082,21 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <p>Time and again, Rider seems to reformat <em>.csproj</em> files automatically on adding new files. Looks
     like RIDER-6450.</p>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Visual Studio does the job without notable issues.</p>
-<ol>
-    <li>Creating a <em>Shared</em> folder and a layout view (<em>Add New Item</em> -&gt; Razor layout, named
-        <em>_Layout.cshtml</em> by default) inside. Two different commands but OK, at least the layout item
-        template is there.
-    </li>
-    <li>Removing redundant markup from <em>Index.cshtml. Then </em>adding a title via <code>ViewBag</code>,
-        as well as a path to layout (no path completion).
-    </li>
-    <li>Adding a <code>@RenderSection</code> block to <em>_Layout.cshtml</em>: OK.</li>
-    <li>Adding a footer section to the <em>Index</em> view: OK.</li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/622e61cef13a5c6043784abffb0bfa0d5406f3d3">Commit link</a></p>
 
 <h2>Creating <em>_ViewStart.cshtml</em> and editing titles in other views</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All goes as expected in Visual Studio</p>
+<ol>
+    <li>Creating <em>_ViewStart.cshtml</em> in the <em>Views</em> folder: there's a special <em>Razor View
+        Start</em> file template with the correct name and default content. All fine.
+    </li>
+    <li>Editing <em>Create</em>, <em>Details</em> views to define titles; editing the <em>Index</em> view to
+        remove a layout reference because it's now in <em>_ViewStart.cshtml</em>: OK.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>OK in Rider but a view start file template is missing.</p>
@@ -1098,21 +1110,19 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>All goes as expected in Visual Studio</p>
-<ol>
-    <li>Creating <em>_ViewStart.cshtml</em> in the <em>Views</em> folder: there's a special <em>Razor View
-        Start</em> file template with the correct name and default content. All fine.
-    </li>
-    <li>Editing <em>Create</em>, <em>Details</em> views to define titles; editing the <em>Index</em> view to
-        remove a layout reference because it's now in <em>_ViewStart.cshtml</em>: OK.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/b70b41ca6345c7fd5bf4d85a896e8aa6edd4b4c7">Commit link</a></p>
 
 <h2>Putting common using statements into <em>_ViewImports.cshtml</em></h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does the job but requires too much manual work.</p>
+<ol>
+    <li>Editing <em>_ViewImports.cshtml</em>: OK, although FQN completion is clumsy.</li>
+    <li>Going through views to remove redundant using directives by hand: no quick actions to do this in
+        Razor files.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Rider does a far better job, thanks to completion and batch QFs.</p>
@@ -1125,19 +1135,43 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio does the job but requires too much manual work.</p>
-<ol>
-    <li>Editing <em>_ViewImports.cshtml</em>: OK, although FQN completion is clumsy.</li>
-    <li>Going through views to remove redundant using directives by hand: no quick actions to do this in
-        Razor files.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/043ba15a6f2c1b61d1df0ba6463720c322fabfeb">Commit link</a></p>
 
 <h2>Using Razor Pages</h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio does the job - nothing special though. A few code completion/code analysis issues along the
+    way.</p>
+<ol>
+    <li>Creating a <em>Pages</em> folder, adding a page via <em>New Item &gt; Razor Pages &gt; Razor
+        Page</em> (additional templates include <em>Razor Page using EF</em> and <em>Razor Page using EF
+        (CRUD)</em>) called <em>Greeting.cshtml</em>. All fine.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em>: code completion for C# references is there.</li>
+    <li>Copy/pasting <em>_ViewImports</em> and <em>_ViewStart</em> to the <em>Pages</em> folder, editing
+        <em>_ViewImports</em> to use more namespaces.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> by adding an <code>@inject</code> directive (and Scott is having
+        all kinds of issues with VS showing red code because of files not saved).
+    </li>
+    <li>Editing <em>ViewStart</em> to use a <em>_Layout.cshtml</em> in the <em>Pages</em> folder (which is
+        not there); copy-pasting existing <em>_Layout.cshtml</em> to the <em>Pages</em> folder.
+    </li>
+    <li>Editing <em>Greeting.cshtml</em> to use a <code>@model</code> instead of <code>@inject</code>. This
+        generates a code-behind file (<em>Greeting.cshtml.cs</em>, or was it there since adding the Razor
+        page?<em>) </em>and also shows a nested and seemingly
+        redundant<em>_Pages_Greeting</em>:<br>
+        <img width="600" src="images/vs_razor_pages_codebehind.png">
+    </li>
+    <li>Editing code-behind: injecting service, getting message of the day within <code>OnGet()</code>.</li>
+    <li>Editing <em>Greeting.cshtml</em> to render a property on the code-behind, and adding a required
+        parameter via the <code>@page</code> directive; editing code-behind to make use of the parameter
+        (adding string interpolation)
+    </li>
+</ol>
+<p>Visual Studio has at some point modified the .sln file to change project GUID. Made a similar change in
+    Rider manually.</p>
 
 <h3>Observations: Rider :heart:</h3>
 <p>It all goes wrong as soon as Rider fails to properly create an item for a Razor page; if this is
@@ -1175,43 +1209,30 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio does the job - nothing special though. A few code completion/code analysis issues along the
-    way.</p>
-<ol>
-    <li>Creating a <em>Pages</em> folder, adding a page via <em>New Item &gt; Razor Pages &gt; Razor
-        Page</em> (additional templates include <em>Razor Page using EF</em> and <em>Razor Page using EF
-        (CRUD)</em>) called <em>Greeting.cshtml</em>. All fine.
-    </li>
-    <li>Editing <em>Greeting.cshtml</em>: code completion for C# references is there.</li>
-    <li>Copy/pasting <em>_ViewImports</em> and <em>_ViewStart</em> to the <em>Pages</em> folder, editing
-        <em>_ViewImports</em> to use more namespaces.
-    </li>
-    <li>Editing <em>Greeting.cshtml</em> by adding an <code>@inject</code> directive (and Scott is having
-        all kinds of issues with VS showing red code because of files not saved).
-    </li>
-    <li>Editing <em>ViewStart</em> to use a <em>_Layout.cshtml</em> in the <em>Pages</em> folder (which is
-        not there); copy-pasting existing <em>_Layout.cshtml</em> to the <em>Pages</em> folder.
-    </li>
-    <li>Editing <em>Greeting.cshtml</em> to use a <code>@model</code> instead of <code>@inject</code>. This
-        generates a code-behind file (<em>Greeting.cshtml.cs</em>, or was it there since adding the Razor
-        page?<em>) </em>and also shows a nested and seemingly
-        redundant<em>_Pages_Greeting</em>:<br>
-        <img width="600" src="images/vs_razor_pages_codebehind.png">
-    </li>
-    <li>Editing code-behind: injecting service, getting message of the day within <code>OnGet()</code>.</li>
-    <li>Editing <em>Greeting.cshtml</em> to render a property on the code-behind, and adding a required
-        parameter via the <code>@page</code> directive; editing code-behind to make use of the parameter
-        (adding string interpolation)
-    </li>
-</ol>
-<p>Visual Studio has at some point modified the .sln file to change project GUID. Made a similar change in
-    Rider manually.</p>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/e7d3fbbe9cf6699099a9923f463149a4f737ad0f">Commit link</a></p>
 
 <h2>Adding the Edit form using Razor Pages</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>VS gets the job done, with usual small annoyances (no import completion, shaky code analysis in Razor
+    page view etc.)</p>
+<ol>
+    <li>Adding a new <em>Pages/Restaurants</em> directory and <em>Edit.cshtml</em> Razor page (file template
+        with code-behind).
+    </li>
+    <li>Adding a link to the new page from the <em>Index</em> view.</li>
+    <li>Copying over a form from the <em>Create</em> view to <em>Edit.cshtml</em> and adapting (such as
+        adding a hidden input for restaurant ID).
+    </li>
+    <li>Adding the <code>Update()</code> method to <code>IRestaurantData</code> and derived types (just a
+        stub in <code>InMemoryRestaurantData</code>)
+    </li>
+    <li>Editing <em>Edit</em> page code-behind with a constructor accepting an <code>IRestaurantData</code>
+        and saving to a field, a bind property to hold and update restaurant information, implementing
+        <code>OnGet(int id)</code> and adding <code>OnPost()</code> with model validation.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Rider provides a few nice features but again, there's no way to easily create a Razor page with
@@ -1250,31 +1271,23 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>VS gets the job done, with usual small annoyances (no import completion, shaky code analysis in Razor
-    page view etc.)</p>
-<ol>
-    <li>Adding a new <em>Pages/Restaurants</em> directory and <em>Edit.cshtml</em> Razor page (file template
-        with code-behind).
-    </li>
-    <li>Adding a link to the new page from the <em>Index</em> view.</li>
-    <li>Copying over a form from the <em>Create</em> view to <em>Edit.cshtml</em> and adapting (such as
-        adding a hidden input for restaurant ID).
-    </li>
-    <li>Adding the <code>Update()</code> method to <code>IRestaurantData</code> and derived types (just a
-        stub in <code>InMemoryRestaurantData</code>)
-    </li>
-    <li>Editing <em>Edit</em> page code-behind with a constructor accepting an <code>IRestaurantData</code>
-        and saving to a field, a bind property to hold and update restaurant information, implementing
-        <code>OnGet(int id)</code> and adding <code>OnPost()</code> with model validation.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/d721c764a7b1e77225ffbc9f230e296336dbbd00">Commit link</a></p>
 
 <h2>Refactoring the <em>Index</em> view to use a new <em>_Summary</em> partial view
 </h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All fine in Visual Studio.</p>
+<ol>
+    <li>Editing the <em>Index</em> view to use a partial view for each restaurant summary instead of a
+        table.
+    </li>
+    <li>Creating a <em>_Summary.cshtml</em> partial view under <em>Views/Home</em> with <em>Add New
+        Item</em>. Adding markup to display a restaurant summary. Copying links to <em>Details</em> and <em>Edit</em>
+        views from <em>Index.cshtml</em> and adapting them.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Rider works well enough. Creating views from usage doesn't work here for whatever reason but Visual
@@ -1299,42 +1312,10 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>All fine in Visual Studio.</p>
-<ol>
-    <li>Editing the <em>Index</em> view to use a partial view for each restaurant summary instead of a
-        table.
-    </li>
-    <li>Creating a <em>_Summary.cshtml</em> partial view under <em>Views/Home</em> with <em>Add New
-        Item</em>. Adding markup to display a restaurant summary. Copying links to <em>Details</em> and <em>Edit</em>
-        views from <em>Index.cshtml</em> and adapting them.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/7c2db6646dbb28c302e0b97862b47f1e05fb0fc7">Commit link</a></p>
 
 <h2>Moving the footer section to a new view component</h2>
-
-<h3>Observations: Rider :yellow_heart:</h3>
-<p>Rider makes a statement to be better with the quick-fix to create view component views from usage -
-    however, the quick-fix is unfortunately broken.</p>
-<ol>
-    <li>Creating a <em>ViewComponents</em> folder and a <em>GreeterViewComponent.cs</em> class inside; adding logic to
-        the class. All good, <em>Create readonly field from constructor parameter</em> helps again.
-    </li>
-    <li>Trying to create the <em>Default</em> view for the view component with a quick-fix:<br>
-        <img width="600" src="images/rider_create_view_component_view.png"><br>
-        It doesn't work unfortunately, throwing DEXP-361709 along the way. OK, creating manually, which is less 
-        cumbersome to do than in Visual Studio anyway. Adding simple view content, all fine.
-    </li>
-    <li>Editing <em>_Layout.cshtml</em> to invoke the view component in two ways. Completion for view component class in
-        string literals is a nice surprise:<br>
-        <img width="600" src="images/rider_component_invoke_completion.png"><br>
-        Neither Rider nor Visual Studio provide completion for the tag helper syntax. Adding a directive to 
-        <em>_ViewImports.cshtml</em> - OK although there's no completion for namespaces (much like Visual Studio)ю
-    </li>
-</ol>
 
 <h3>Observations: Visual Studio :green_heart:</h3>
 <p>Visual Studio does the job at its usual standard although creating the directory hierarchy for view
@@ -1345,7 +1326,7 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
     <li>Removing the footer section from <em>Index.cshtml</em> as it's going to be a view component.</li>
     <li>Under <em>Views/Shared</em>, creating directory hierarchy <em>Components/Greeter</em>, and a new
-        Razor view inside to be used by the view component: <em>Default.cshtml</em>. Creating these 3 items is a bit 
+        Razor view inside to be used by the view component: <em>Default.cshtml</em>. Creating these 3 items is a bit
         painful in VS. Very few edits to the view.
     </li>
     <li>Editing <em>_Layout.cshtml</em> to include 2 alternative ways of invoking the view component. One of
@@ -1354,10 +1335,45 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
+<h3>Observations: Rider :yellow_heart:</h3>
+<p>Rider makes a statement to be better with the quick-fix to create view component views from usage -
+    however, the quick-fix is unfortunately broken.</p>
+<ol>
+    <li>Creating a <em>ViewComponents</em> folder and a <em>GreeterViewComponent.cs</em> class inside; adding logic to
+        the class. All good, <em>Create readonly field from constructor parameter</em> helps again.
+    </li>
+    <li>Trying to create the <em>Default</em> view for the view component with a quick-fix:<br>
+        <img width="600" src="images/rider_create_view_component_view.png"><br>
+        It doesn't work unfortunately, throwing DEXP-361709 along the way. OK, creating manually, which is less
+        cumbersome to do than in Visual Studio anyway. Adding simple view content, all fine.
+    </li>
+    <li>Editing <em>_Layout.cshtml</em> to invoke the view component in two ways. Completion for view component class in
+        string literals is a nice surprise:<br>
+        <img width="600" src="images/rider_component_invoke_completion.png"><br>
+        Neither Rider nor Visual Studio provide completion for the tag helper syntax. Adding a directive to
+        <em>_ViewImports.cshtml</em> - OK although there's no completion for namespaces (much like Visual Studio)ю
+    </li>
+</ol>
+
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/d1e4e4af7104e2591856468513a49413b9e1fd51">Commit link</a></p>
 
 <h2>Switching over to using SSL</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio makes the process easy. Automating the generation of a self-signed certificate is
+    especially appreciated.</p>
+<ol>
+    <li>Switching to use SSL: <em>Project properties &gt; Debug &gt; Enable SSL</em>. A new URL is
+        generated, copying it to the adjacent <em>App URL</em> setting. The actual settings are stored in
+        <em>launchSettings.json &gt; iisExpress</em>. When first trying to start an application that is
+        configured to use SSL, Visual Studio suggests that a self-signed certificate is generated by IIS
+        Express for development purposes, and then suggests to trust the certificate.
+    </li>
+    <li>Adding the <code>Rewriter()</code> middleware to <em>Startup.cs</em> with an option to permanently
+        redirect all HTTP to HTTPS requests.
+    </li>
+</ol>
 
 <h3>Observations: Rider :heart:</h3>
 <p>Poor experience. Running ASP.NET Core on IIS Express is not supported (RIDER-11638), thus
@@ -1378,21 +1394,6 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     <li>Adding <code>Rewriter()</code> middleware - OK.</li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Visual Studio makes the process easy. Automating the generation of a self-signed certificate is
-    especially appreciated.</p>
-<ol>
-    <li>Switching to use SSL: <em>Project properties &gt; Debug &gt; Enable SSL</em>. A new URL is
-        generated, copying it to the adjacent <em>App URL</em> setting. The actual settings are stored in
-        <em>launchSettings.json &gt; iisExpress</em>. When first trying to start an application that is
-        configured to use SSL, Visual Studio suggests that a self-signed certificate is generated by IIS
-        Express for development purposes, and then suggests to trust the certificate.
-    </li>
-    <li>Adding the <code>Rewriter()</code> middleware to <em>Startup.cs</em> with an option to permanently
-        redirect all HTTP to HTTPS requests.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>Commits:</p>
 <ul>
@@ -1403,6 +1404,25 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 <h2>Registering with an OpenID provider, adding OpenID configuration, configuring services and middleware, marking
     controllers, actions and page code-behind to use authorization
 </h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Visual Studio does the job, with some annoyances like no import items in completion (which bites in OAuth
+    configuration).</p>
+<ol>
+    <li>Scott creates an app registration using his Azure AD B2C user account:<br>
+        <img width="600" src="images/azure_app_registration.png"><br>
+        I registered two OAuth apps (one for Rider and one for Visual Studio) with my GitHub account instead.
+    </li>
+    <li>Adding OAuth-related settings, modifying <em>Startup.cs</em> and <em>Program.cs</em> - a mix of
+        Scott's actions and <a href="https://www.jerriepelser.com/blog/authenticate-oauth-aspnet-core-2/">this tutorial</a>
+        that is .NET Core/GitHub-specific. All regular C# and a bit of JSON editing. Fine but again, no import items in
+        completion is a pain in Visual Studio. Also, copy-pasting isn't enjoyable as each unimported symbol
+        must be imported with a separate quick action. Rider/ReSharper are way better in this regard.
+    </li>
+    <li>Marking the <em>Home</em> controller and its actions, as well as the <u><em>Edit</em></u> page
+        code-behind with <code>[Authorize]</code> and <code>[AllowAnonymous]</code> attributes.
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Rider does the job albeit with its own share of annoyances (import completion in attributes!)
@@ -1421,38 +1441,19 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Visual Studio does the job, with some annoyances like no import items in completion (which bites in OAuth
-    configuration).</p>
-<ol>
-    <li>Scott creates an app registration using his Azure AD B2C user account:<br>
-        <img width="600" src="images/azure_app_registration.png"><br>
-        I registered two OAuth apps (one for Rider and one for Visual Studio) with my GitHub account instead.
-    </li>
-    <li>Adding OAuth-related settings, modifying <em>Startup.cs</em> and <em>Program.cs</em> - a mix of
-        Scott's actions and <a href="https://www.jerriepelser.com/blog/authenticate-oauth-aspnet-core-2/">this tutorial</a> 
-        that is .NET Core/GitHub-specific. All regular C# and a bit of JSON editing. Fine but again, no import items in
-        completion is a pain in Visual Studio. Also, copy-pasting isn't enjoyable as each unimported symbol
-        must be imported with a separate quick action. Rider/ReSharper are way better in this regard.
-    </li>
-    <li>Marking the <em>Home</em> controller and its actions, as well as the <u><em>Edit</em></u> page
-        code-behind with <code>[Authorize]</code> and <code>[AllowAnonymous]</code> attributes.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/170462ecf4d0bfb1296acd0c782079b89aa190f5">Commit link</a></p>
 
 <h2>Displaying information about user identity</h2>
 
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Adding markup and code to <em>_Layout.cshtml</em> that goes through user identity information and
+    displays claim values. Regular Razor editing. All fine.</p>
+
 <h3>Observations: Rider :green_heart:</h3>
 <p>Adding markup and code to <em>_Layout.cshtml</em> that goes through user identity information and displays claim
     values. Regular Razor editing. All good.
 </p>
-
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Adding markup and code to <em>_Layout.cshtml</em> that goes through user identity information and
-    displays claim values. Regular Razor editing. All fine.</p>
 
 <h3>Notes, commits</h3>
 <p>
@@ -1460,6 +1461,20 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
         link</a></p>
 
 <h2>Adding <em>package.json</em> and installing bootstrap</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Polished experience in Visual Studio. npm dependency indication in Solution Explorer is a nice bonus. The
+    default content of <em>package.json</em> is a bit different from Rider.</p>
+<ol>
+    <li>Adding <em>package.json</em> to the project via <em>Add new item</em> -&gt; <em>npm configuration
+        file</em> template. This introduces a new <em>npm</em> node in project dependencies. (<em>node_folders</em>
+        isn't shown by default though, unless <em>Show all files</em> is on.
+    </li>
+    <li>Adding a <em>bootstrap</em> dependency in <em>package.json</em> &gt; saving &gt; Visual Studio
+        auto-installs the package. Completion in <em>package.json</em> is very solid: both for property
+        names (incl. packages available in npm) and values (versions of the packages).
+    </li>
+</ol>
 
 <h3>Observations: Rider :green_heart:</h3>
 <p>Very solid experience in Rider, too. No dependency indication in Solution Explorer but overall smoother
@@ -1478,26 +1493,29 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Polished experience in Visual Studio. npm dependency indication in Solution Explorer is a nice bonus. The
-    default content of <em>package.json</em> is a bit different from Rider.</p>
-<ol>
-    <li>Adding <em>package.json</em> to the project via <em>Add new item</em> -&gt; <em>npm configuration
-        file</em> template. This introduces a new <em>npm</em> node in project dependencies. (<em>node_folders</em>
-        isn't shown by default though, unless <em>Show all files</em> is on.
-    </li>
-    <li>Adding a <em>bootstrap</em> dependency in <em>package.json</em> &gt; saving &gt; Visual Studio
-        auto-installs the package. Completion in <em>package.json</em> is very solid: both for property
-        names (incl. packages available in npm) and values (versions of the packages).
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/6072aa78ed103827fd1d2d06d61740605c43acc8">Commit link</a></p>
 
 <h2>Writing an application builder extension method to enable serving files from <em>node_modules</em> (as
     an alternative to using something like gulp or grunt)
 </h2>
+
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Visual Studio: decent experience with ups and downs: drag-and-drop CSS to put a link reference to it is
+    nice, but having to use an external namespace to enable code completion is not.</p>
+<ol>
+    <li>Adding an undeclared application builder extension method to <em>Startup.cs</em> that would enable
+        serving static files. Visual Studio can't create extension methods from usage.
+    </li>
+    <li>Adding a <em>Middleware</em> folder and a new class in it to implement the extension method. Putting
+        the class in the <code>Microsoft.AspNetCore.Builder</code> namespace to enable Visual Studio's code
+        completion to see it (
+    </li>
+    <li>Editing <em>_Layout.cshtml</em> to refer to <em>bootstrap.css</em> in <em>node_modules</em>. Visual
+        Studio can generate a link tag with the right path when you drag-and-drop <em>bootstrap.css</em>
+        from Solution Explorer, quite a nice touch.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Rider: also up and down. Not being able to create extension methods from usage is sad. Completion issues
@@ -1517,23 +1535,6 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Visual Studio: decent experience with ups and downs: drag-and-drop CSS to put a link reference to it is
-    nice, but having to use an external namespace to enable code completion is not.</p>
-<ol>
-    <li>Adding an undeclared application builder extension method to <em>Startup.cs</em> that would enable
-        serving static files. Visual Studio can't create extension methods from usage.
-    </li>
-    <li>Adding a <em>Middleware</em> folder and a new class in it to implement the extension method. Putting
-        the class in the <code>Microsoft.AspNetCore.Builder</code> namespace to enable Visual Studio's code
-        completion to see it (
-    </li>
-    <li>Editing <em>_Layout.cshtml</em> to refer to <em>bootstrap.css</em> in <em>node_modules</em>. Visual
-        Studio can generate a link tag with the right path when you drag-and-drop <em>bootstrap.css</em>
-        from Solution Explorer, quite a nice touch.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p>
     <a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/1ece66e0bc1ca897d0cd7d0e161427633b580462">Commit
@@ -1541,21 +1542,32 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
 
 <h2>Styling views with bootstrap</h2>
 
+<h3>Observations: Visual Studio :yellow_heart:</h3>
+<p>Adding bootstrap classes to various elements across Razor views and layouts. Visual Studio's code
+    completion isn't helpful at all (suggests certain bootstrap classes but they aren't what I need every
+    single time - this is probably hippie completion for class names that were already used).</p>
+
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Adding bootstrap classes to various elements across Razor views and layouts. Completion is unhelpful, too, and as in
     Visual Studio, it's probably hippie completion. I assume that these problems are related to the way <em>bootstrap.css</em>
     is referenced in <em>_Layout.cshtml</em>.
 </p>
 
-<h3>Observations: Visual Studio :yellow_heart:</h3>
-<p>Adding bootstrap classes to various elements across Razor views and layouts. Visual Studio's code
-    completion isn't helpful at all (suggests certain bootstrap classes but they aren't what I need every
-    single time - this is probably hippie completion for class names that were already used).</p>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/0b8071413e2336482aeb8e7d8603c7397adda0d3">Commit link</a></p>
 
 <h2>Adding client-side validation</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>All fine in Visual Studio. Well, maybe generating script/link references with drag-and-drop is not as
+    nice as I thought, as it requires quite a bit of precise mouse manipulation and adding new lines in the
+    editor beforehand.</p>
+<ol>
+    <li>Adding a few more dependencies into <em>package.json</em>, they're then auto-installed.</li>
+    <li>Drag-and-dropping each of the installed dependencies into <em>_Layout.cshtml</em> to generate script
+        references to them.
+    </li>
+</ol>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Rider is doing great in terms of package.json editing but disappoints when editing script references
@@ -1575,21 +1587,20 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     </li>
 </ol>
 
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>All fine in Visual Studio. Well, maybe generating script/link references with drag-and-drop is not as
-    nice as I thought, as it requires quite a bit of precise mouse manipulation and adding new lines in the
-    editor beforehand.</p>
-<ol>
-    <li>Adding a few more dependencies into <em>package.json</em>, they're then auto-installed.</li>
-    <li>Drag-and-dropping each of the installed dependencies into <em>_Layout.cshtml</em> to generate script
-        references to them.
-    </li>
-</ol>
-
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/7b546b8429b5c5d3bbc5543477419374f4021d84">Commit link</a></p>
 
 <h2>Using CDNs in production environment</h2>
+
+<h3>Observations: Visual Studio :green_heart:</h3>
+<p>Wrapping script and link references in <em>_Layout.cshtml</em> with the <code>&lt;environment/&gt;</code>
+    tag and using various ASP.NET tag helpers to test if scripts and stylesheets have in fact been delivered
+    from a CDN.</p>
+<p>Visual Studio does a very good job providing code completion for tag helper attributes in the <code>&lt;link/&gt;</code>
+    tag:<br>
+    <img width="600" src="images/vs_link_completion_tag_helpers.png">
+</p>
+<p>Wrapping markup with tags is a bit cumbersome though.</p>
 
 <h3>Observations: Rider :yellow_heart:</h3>
 <p>Wrapping with tags is more fluid with surround templates but there's a bug whereby after applying the
@@ -1601,16 +1612,6 @@ The steps outlined were taken in Visual Studio 2017 15.7.4 (RTM) and various Rid
     etc.).</p>
 <p>This is missing functionality but let's go with yellow instead of red as this isn't a very mainstream
     scenario.</p>
-
-<h3>Observations: Visual Studio :green_heart:</h3>
-<p>Wrapping script and link references in <em>_Layout.cshtml</em> with the <code>&lt;environment/&gt;</code>
-    tag and using various ASP.NET tag helpers to test if scripts and stylesheets have in fact been delivered
-    from a CDN.</p>
-<p>Visual Studio does a very good job providing code completion for tag helper attributes in the <code>&lt;link/&gt;</code>
-    tag:<br>
-    <img width="600" src="images/vs_link_completion_tag_helpers.png">
-</p>
-<p>Wrapping markup with tags is a bit cumbersome though.</p>
 
 <h3>Notes, commits</h3>
 <p><a href="https://github.com/gorohoroh/rider-visual-studio-asp.net-core-fundamentals/commit/b1cc9ec815717ec2d110822921107c4d83a57cb2">Commit link</a></p>
